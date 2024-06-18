@@ -42,7 +42,7 @@ function Header() {
     <>  
       <Box bg="#181818" color="white" fontSize="14" paddingY="1.5" paddingX="20" width={"full"}>
         <Flex>
-          <Box textAlign={{base:"center" , md:"start"}}>
+          <Box textAlign={{base:"center" , md:"start"}} fontSize="xs">
               wall clock zone: {names[index]}
           </Box>
           <Spacer />
@@ -51,7 +51,7 @@ function Header() {
           </Box>
         </Flex>   
       </Box>
-      <Box as="header" bg="white" color="black" fontSize='md' fontFamily={"font-family: Open Sans"} letterSpacing='.8px' paddingX="20" mb={"0"} >
+      <Box as="header" bg="white" color="black" fontSize='md' fontFamily={"font-family: Open Sans"} letterSpacing='.8px' paddingX={{base:"5", md:"20"}} mb={"0"} >
         <RouterLink to="/" display="flex" alignItems="center" fontWeight={"medium"}>
           <Text fontSize="xl"  color="black" textAlign={"center"}>Wall Clock <br /> Zone</Text>
         </RouterLink>

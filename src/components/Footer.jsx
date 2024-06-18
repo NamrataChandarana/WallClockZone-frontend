@@ -1,7 +1,5 @@
 import React from "react";
-// import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-// import "./style/style.css";
-import { Box, Flex,  SimpleGrid, Stack, Text, IconButton, WrapItem, Tooltip, Spacer } from "@chakra-ui/react";
+import { Box, Flex,  SimpleGrid, Stack, Text, IconButton, WrapItem, Tooltip} from "@chakra-ui/react";
 import {FaTwitter, FaGithubSquare, FaLinkedinIn} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -11,7 +9,7 @@ function Footer() {
       <Box bg="#181818"  py={10} px={20}  fontFamily={"font-family: Open Sans"} letterSpacing='.8px' mt="10">
           <Flex direction={{ base: "column", lg: "row" }} align="start" mb={8}>
             <SimpleGrid columns={{ base: 1, lg: 4 }}  spacing={50} width={"full"}  >
-              <Box marginX={{base:"auto"}} width={{base:"250px", lg:"auto"}}>
+              <Box marginX={{base:"auto"}} width={{base:"200px", lg:"auto"}}>
                 <Text fontSize="xl" fontWeight="xs" color="#00A9DA" >Contact Us</Text>
                 <Stack spacing={0} color="white" fontWeight="xs" fontSize="sm" >
                   <Text>1234 North Avenue Luke Lane South Bend, IN 360001</Text>

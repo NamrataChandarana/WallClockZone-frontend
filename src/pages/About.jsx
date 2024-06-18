@@ -8,7 +8,7 @@ function About() {
   return (
     <>
       <SubHeading title="Wall Clock Zone" subTitle="About Us"/>
-       <Box id="about" className="about" mb="10"  mx="auto" p={{base:7, sm: 10, md:10}}>
+       <Box id="about" className="about" mb="10" mx="auto" p={{base:7, sm: 10, md:10}}>
           <Title title="About Us"/>
           <Flex className="row " flexDirection={{ base: "column", lg: "row" }} justifyContent={"center"}>
             <Box className="col-lg-4" >
