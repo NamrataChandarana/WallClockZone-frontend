@@ -1,56 +1,55 @@
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Text, Stack } from "@chakra-ui/react";
 import Title from "../components/Title";
 import SubHeading from "../components/SubHeading";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdMyLocation,  MdEmail } from "react-icons/md";
 
 function About() {
   return (
     <>
       <SubHeading title="Wall Clock Zone" subTitle="About Us"/>
-       <Box id="about" className="about">
+       <Box id="about" className="about" mb="10"  mx="auto" p={{base:7, sm: 10, md:10}}>
           <Title title="About Us"/>
-          <Flex className="row content" flexDirection={{ base: "column", lg: "row" }} mx={10}>
-            <Box className="col-lg-6" >
+          <Flex className="row " flexDirection={{ base: "column", lg: "row" }} justifyContent={"center"}>
+            <Box className="col-lg-4" >
               <Image
                 src={require("./asset/img1.jpeg")}
                 className="img-fluid animated"
                 alt="about"
-                // height={300}
+                height={{sm:300,md:350}}
+                display="flex"
+                mx="auto"
               />
             </Box>
-            <Box className="col-lg-6" pt={{ base: 4, lg: 0 }} fontFamily={["Open Sans", "sans-seri"]}>
+            <Box className="col-lg-6" pt={{ base: 4, lg: 0 }} fontFamily={["Open Sans", "sans-seri"]} fontSize={{base:"sm", md:"lg"}}>
               <Text textAlign="justify" >
-                WALL CLOCK ZONE has a world of fabulous designs of wall clocks
-                for the changing times. it has hand the philosophy
-                of changing the way people look at wall clocks. The
-                metamorphosis of having just a functional piece of watch to
-                haveof the changing preferences of the people into the various
-                that are continuously being updated.
+                Welcome to our platform, where we facilitate connections between suppliers and buyers within the wall clock industry across India. Recognizing the fragmented nature of this business, our goal is to bridge regional gaps and provide a seamless network for business expansion.
               </Text>
               <Text textAlign="justify" mt={4}>
-                WALL CLOCK ZONE with state-of-art production facility in the
-                industrious state of Gujarat has computerized controlled
-                injection molding system for meeting demand of market. The
-                company had phased expansion in its span of twenty years and has
-                also earned the confidence and faith of the people at large.
-                Today it has a large export market spread over
-                various African countries and also in the United Kingdom. The
-                Middle East also is highly receptive of the products under the
-                brand name WALL CLOCK ZONE.
+                Our mission is to revolutionize the wall clock industry by offering a dynamic marketplace. We aim to empower businesses with diverse options for buyers and a robust search database to facilitate global growth.
               </Text>
-              <Text textAlign="justify" mt={4}>
-                Today at the turn of the century it has exploited
-                enticingly most of the geometrical shapes with a wide range of
-                colors and designs. Trends contemporary, Antique and a myriad
-                types are today available the bran of it. The
-                millennium collection aims at satisfying the various need of the
-                customers cut across the globe.it is working hard
-                to master the craftsmanship of time.
-              </Text>
-    
-              {/* <Link href="/" className="btn-learn-more">
-                Learn More
-              </Link> */}
+              {/* <Text textAlign="justify" mt={4}>
+                We are committed to empowering our users with a user-friendly interface that allows businesses to manage their profiles effectively. Whether you're an established company or a startup, our platform supports your journey by keeping you informed about market trends and facilitating growth opportunities.
+              </Text> */}
+              <Stack spacing={2} fontWeight="xs" >
+              <Flex gap="2" fontSize="2xl"  >
+                <MdMyLocation mt="2" color="#00A9DA" />
+                <Text fontSize={{base:"sm", md:"md"}}>1234 North Avenue Luke Lane South Bend, IN 360001</Text>
+              </Flex>
+              
+              <Flex gap="2" fontSize="2xl">
+                <FaPhoneAlt color="#00A9DA"/>
+                <Text fontSize={{base:"sm", md:"md"}}>1234567894</Text>
+              </Flex>
+              
+              <Flex gap="2" fontSize="2xl">
+                <MdEmail color="#00A9DA"/>
+                <Text fontSize={{base:"sm", md:"md"}}>support@wallclockzone.com</Text>
+              </Flex>
+             
+            </Stack>
             </Box>
+           
           </Flex>
       </Box>
     </>
