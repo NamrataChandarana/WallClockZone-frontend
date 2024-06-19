@@ -14,6 +14,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Title from "../components/Title";
 import SubHeading from "../components/SubHeading";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Category() {
 
@@ -44,6 +46,7 @@ function Category() {
 
   return (
     <Box>
+      <Header />
       <SubHeading title="Wall Clock Zone" subTitle="Category"/>
       <Title title="Category"/>
       <Box className="container">
@@ -89,7 +92,9 @@ function Category() {
           }
         </Box>
       </Box>
+      <Footer />
     </Box>
+    
   );
 }
 

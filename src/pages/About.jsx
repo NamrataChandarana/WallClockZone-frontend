@@ -3,10 +3,13 @@ import Title from "../components/Title";
 import SubHeading from "../components/SubHeading";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdMyLocation,  MdEmail } from "react-icons/md";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function About() {
   return (
     <>
+      <Header />
       <SubHeading title="Wall Clock Zone" subTitle="About Us"/>
        <Box id="about" className="about" mb="10" mx="auto" p={{base:7, sm: 10, md:10}}>
           <Title title="About Us"/>
@@ -46,12 +49,11 @@ function About() {
                 <MdEmail color="#00A9DA"/>
                 <Text fontSize={{base:"sm", md:"md"}}>support@wallclockzone.com</Text>
               </Flex>
-             
             </Stack>
             </Box>
-           
           </Flex>
       </Box>
+      <Footer />
     </>
   );
 }

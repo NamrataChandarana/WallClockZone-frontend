@@ -10,6 +10,8 @@ import { Box, Button, FormControl, FormLabel, Input, Text} from "@chakra-ui/reac
 import Title from "./Title";
 import SubHeading from "./SubHeading";
 import { color } from "framer-motion";
+import Header from "./Header";
+import Footer from "./Footer";
 
 // import toast from "react-hot-toast";
 
@@ -38,6 +40,7 @@ function LoginComponent() {
 
   return (
     <>
+    <Header/>
     <SubHeading title={"Wall Clock Zone"} subTitle={"User Login"}/>
     <Title title="Sign In"/>
     {/* <Box color="gray.500" textAlign={"center"} mb={"20px"}>Login with id & password </Box> */}
@@ -86,6 +89,7 @@ function LoginComponent() {
         </Text>
       </Box>
     </Box>
+    <Footer/>
     </>
   );
 }

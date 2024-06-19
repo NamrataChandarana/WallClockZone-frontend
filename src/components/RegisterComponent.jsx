@@ -11,6 +11,8 @@ import Form from "./Form";
 import SubHeading from "./SubHeading";
 import { FaCheck } from "react-icons/fa";
 import { Flex } from "@chakra-ui/react";
+import Footer from "./Footer";
+import Header from "./Header";
 
 function RegisterComponent() {
   const [inputs , setInputs] = useState({
@@ -49,7 +51,7 @@ function RegisterComponent() {
       return;
     }
 
-    const res = await dispatch(
+    const res = dispatch(
       registeration(
         inputs.firstname,
         inputs.lastname,
@@ -76,6 +78,7 @@ function RegisterComponent() {
 
   return (
     <>
+      <Header/>
       <SubHeading title="Wall Clock Zone" subTitle="User Register"/>
       <Title title="Register An Account" />
       <Form inputs={inputs} setInputs={setInputs} errors={errors} readonly="" isRegistration="true"/>
@@ -87,6 +90,7 @@ function RegisterComponent() {
           </Button>
         </Flex> 
       </Box>
+      <Footer/>
     </>
   );
 }
