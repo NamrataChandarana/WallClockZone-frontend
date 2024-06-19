@@ -21,7 +21,6 @@ import Chat from "./pages/Chat";
 import { Toaster} from 'sonner'
 import AuthLayout from "./components/AuthLayout";
 import Pagenotfound from "./pages/Pagenotfound";
-import BusinessCategory from "./pages/admin/BusinessCategory";
 
 function App() {
 
@@ -33,7 +32,6 @@ function App() {
 
   return (
     <Router>
-      <Header />
       <Routes>
         <Route path="/" element={
           <Home />
@@ -80,9 +78,7 @@ function App() {
         </AuthLayout>
        } />
         <Route path="*" element={
-        <AuthLayout >
           <Pagenotfound />
-        </AuthLayout>
         } />
         <Route path="/getallusers" element={
         <AuthLayout userRole={true}>
@@ -94,18 +90,12 @@ function App() {
           <Admingetapproveduser />
         </AuthLayout>
         } />
-        <Route path="/admin/category" element={
-        <AuthLayout userRole={true}>
-          <BusinessCategory />
-        </AuthLayout>
-        } />
         <Route path="/chat" element={
         <AuthLayout>
           <Chat />
         </AuthLayout>
         } />
       </Routes>
-      <Footer />
       <Toaster position="top-center" />
     </Router>
   );

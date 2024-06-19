@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  Link as RouterLink } from "react-router-dom";
-import "./style/Header.css";
+import "./style/style.css";
 import { logout } from "../redux/actions/user";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer } from '@chakra-ui/react';
 import { FaAlignJustify } from "react-icons/fa";
 import Avtar from "./Avtar";
-import { useColorMode } from "@chakra-ui/react";
 import {
   Menu,
   MenuButton,
@@ -15,36 +14,23 @@ import {
   MenuItem,
 } from '@chakra-ui/react'
 import { useState } from "react";
+import TopHeader from "./TopHeader";
 
 function Header() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const { isOpen, onToggle } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode();
   
   const dispatch = useDispatch();
   const logoutHandler = () => {
-    console.log("logout");
     dispatch(logout());
   };
-  const names = [
-    'Manufacturer Details', 'Wholeshaler Details', 'Raw-material-Dealer Details', 'Designer Details', 'Transpoter Details'
-  ]
-  const [index, setIndex] = useState(0)
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIndex((index + 1) % names.length);
-    }, 1000);
-    return () => clearTimeout(timeout);
-  }, [index]);
+ 
 
   return (
     <>  
       <Box bg="#181818" color="white" fontSize="14" paddingY="1.5" paddingX="20" width={"full"}>
         <Flex>
-          <Box textAlign={{base:"center" , md:"start"}} fontSize="xs">
-              wall clock zone: {names[index]}
-          </Box>
+          <TopHeader/>
           <Spacer />
           <Box display={{base:"none", md:"flex"}} >
             <RouterLink to="/register" _hover={"color: #00A9DA"} letterSpacing="-2%">Create Account</RouterLink>
