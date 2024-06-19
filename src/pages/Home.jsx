@@ -9,6 +9,8 @@ import Service from "../components/Service";
 import { MdMyLocation} from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Home() {
 
@@ -19,6 +21,7 @@ function Home() {
 
   return (
     <>
+      <Header />
       <Carousels/>
       {/* about section */}
       <Box as="section" id="about" className="about" pt={0} px="7">
@@ -147,9 +150,9 @@ function Home() {
             </Box>
           </Box>
           </FormControl>
-         
         </Box>
       </Box>
+      <Footer />
     </>
   );
 }
