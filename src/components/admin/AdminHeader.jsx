@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import {Menu} from '@chakra-ui/react';
 import { useDispatch } from "react-redux";
 import { logout } from '../../redux/actions/user';
-import TopHeader from '../../components/TopHeader';
+import TopHeader from '../TopHeader';
 
 const AdminHeader = () => {
 

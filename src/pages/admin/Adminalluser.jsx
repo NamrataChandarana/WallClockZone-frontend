@@ -5,13 +5,13 @@ import { admingetallUser } from "../../redux/actions/admin";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import FetchUser from "../../components/FetchUser";
 import { Box, Flex} from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
-import AdminHeader from "./AdminHeader";
-import AdminSidebar from "./AdminSidebar";
-import AdminFooter from "./AdminFooter";
-import { Tfoot, Tr, Th, Td,Thead, TableContainer, TableCaption, Table, Tbody} from '@chakra-ui/react';
+import AdminHeader from '../../components/admin/AdminHeader'
+import AdminSidebar from "../../components/admin/AdminSidebar";
+import AdminFooter from "../../components/admin/AdminFooter";
+import {Tr, Th, Td,Thead, TableContainer, Table, Tbody} from '@chakra-ui/react';
+import AdminAction from "../../components/admin/AdminAction";
 
 function Adminalluser() {
   const [keyword, setkeyword] = useState("");
@@ -21,8 +21,7 @@ function Adminalluser() {
  
   useEffect(() => {
     dispatch(admingetallUser());
-
-  }, [message]);
+  }, [message,users]);
 
   if (isAuthenticated) return <Navigate to="/admin/dashboard" />
 
@@ -38,10 +37,10 @@ function Adminalluser() {
                 <Text color="white" fontSize="lg" py="2" px="5">User List</Text>
               </Box>
             </Box>
-            <div className="col-md-12 ">
+            <div>
               {users && users.length > 0 ? (
                 <Box>
-                  <TableContainer>
+                  <TableContainer boxSize={{base:"3xs", md:"lg", xl:"auto" }}>
                     <Table variant='simple'>
                       <Thead>
                         <Tr>
@@ -62,14 +61,10 @@ function Adminalluser() {
                               <Td isNumeric>{user.phoneNo}</Td>
                               <Td>{user.category}</Td>
                               <Td>{(user.status) ? 
-                                 <Text py="2" color="white" textAlign="center" bg="green.500" rounded="full" cursor="pointer" fontSize="sm">Approved</Text>:
+                                 <Text py="2" px="2" color="white" textAlign="center" bg="green.500" rounded="full" cursor="pointer" fontSize="sm">Approved</Text>:
                                  <Text py="2" px="2" color="white" bg="red.500" cursor="pointer" rounded="full"  fontSize="sm">Not Approved</Text> }
                               </Td>
-                              <Flex gap="2" pt="5">
-                                <Text py="2" px="2" color="white" textAlign="center" bg="blue.500" cursor="pointer" fontSize="sm">Message</Text>
-                                <Text py="2" px="2" color="white" textAlign="center" bg="green.500" cursor="pointer" fontSize="sm">Approve</Text>
-                                <Text py="2" px="2" color="white" textAlign="center" bg="red.500" cursor="pointer" fontSize="sm">Delete</Text>
-                              </Flex>
+                              <AdminAction id={user._id} status={user.status}/>
                             </Tr>
                           ))
                         }

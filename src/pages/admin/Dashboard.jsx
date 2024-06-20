@@ -4,9 +4,9 @@ import { Link} from "react-router-dom";
 import { FaAngleRight } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { Text } from "@chakra-ui/react";
-import AdminHeader from "./AdminHeader";
-import AdminSidebar from "./AdminSidebar";
-import AdminFooter from "./AdminFooter";
+import AdminHeader from "../../components/admin/AdminHeader";
+import AdminSidebar from "../../components/admin/AdminSidebar";
+import AdminFooter from "../../components/admin/AdminFooter";
 
 function Dashboard() {
 

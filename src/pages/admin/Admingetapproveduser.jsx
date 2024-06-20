@@ -2,10 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Box, Flex} from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
-import AdminHeader from "./AdminHeader";
-import AdminSidebar from "./AdminSidebar";
-import AdminFooter from "./AdminFooter";
-import FetchUser from "../../components/FetchUser";
+import AdminHeader from "../../components/admin/AdminHeader";
+import AdminSidebar from "../../components/admin/AdminSidebar";
+import AdminFooter from "../../components/admin/AdminFooter";
+import FetchUser from "../../components/admin/FetchUser";
 function Admingetapproveduser() {
   const { users } = useSelector((state) => state.admin);
 
