@@ -29,9 +29,14 @@ function Category() {
 
   if(loading){
     return (
-      <div>
+      <>
+        <Header/>
+        <SubHeading title="Wall Clock Zone" subTitle="Category"/>
         <CategorySkeleton />
-      </div>
+        <Footer/>
+      </>
+     
+      
     )
   }
 
@@ -59,9 +64,8 @@ function Category() {
                   gap={{ base: 6, lg: 8 }}
                 >
                   {categories.map((category) => (
-                   <Link to={`/category/${category.slug}`}>
+                   <Link to={`/category/${category.slug}`} key={category._id}>
                      <Box
-                      key={category.id}
                       className="grid gap-4 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all"
                      >
                       <LazyLoadImage
@@ -69,7 +73,7 @@ function Category() {
                         alt={category.name}
                         w="full"
                         h=""
-                        objectFit="cover"
+                        objectfit="cover"
                         ratio={3 / 2}
                         effect="blur"
                       />

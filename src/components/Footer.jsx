@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Flex,  SimpleGrid, Stack, Text, IconButton, WrapItem, Tooltip} from "@chakra-ui/react";
+import { Box, Flex,  SimpleGrid, Stack, Text, IconButton, WrapItem, Tooltip, Link} from "@chakra-ui/react";
 import {FaTwitter, FaGithubSquare, FaLinkedinIn} from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link as RouterLink} from "react-router-dom";
 
 function Footer() {
   return (
@@ -20,20 +20,20 @@ function Footer() {
               <Box marginX={{base:"auto"}} width={{base:"250px", lg:"auto"}}>
                 <Text fontSize="xl" fontWeight="xs" color="#00A9DA" >Useful Links</Text>
                 <Stack spacing={1} color="white" fontWeight="xs" fontSize="sm" >
-                  <Link to={"/"}>Home</Link>
-                  <Link to={"/about"}>About Us</Link>
-                  <Link to={"/category"}>Categories</Link>
-                  <Link to={"/register"}>Register</Link>
+                  <Link as={RouterLink} to="/">Home</Link>
+                  <Link as={RouterLink} to="/about">About Us</Link>
+                  <Link as={RouterLink} to="/category">Categories</Link>
+                  <Link as={RouterLink} to="/register">Register</Link>
                 </Stack>
               </Box>
               <Box marginX={{base:"auto"}} width={{base:"250px", lg:"auto"}}>
                 <Text fontSize="xl" fontWeight="xs" color="#00A9DA">Category</Text>
                 <Stack spacing={1} color="white" fontWeight="xs" fontSize="sm" >
-                  <Link to={"/category"}>Manufacture</Link>
-                  <Link to={"/category"}>Wholesaler</Link>
-                  <Link to={"/category"}>Row Material Suppliers</Link>
-                  <Link to={"/category"}>Designer</Link>
-                  <Link to={"/category"}>Transpoter</Link>
+                  <Link as={RouterLink} to="/category">Manufacture</Link>
+                  <Link as={RouterLink} to="/category">Wholesaler</Link>
+                  <Link as={RouterLink} to="/category">Row Material Suppliers</Link>
+                  <Link as={RouterLink} to="/category">Designer</Link>
+                  <Link as={RouterLink} to="/category">Transpoter</Link>
                 </Stack>
               </Box>
               <Box marginX={{base:"auto"}} width={{base:"250px", lg:"auto"}}> 
@@ -42,8 +42,8 @@ function Footer() {
                   <WrapItem>
                     <Tooltip label='Github' hasArrow arrowSize={15} placement='top' bg="#00A9DA" py="1.5" px="4" mb="2"> 
                     <IconButton
-                      as="Link"
-                      href="#"
+                      as={RouterLink}
+                      to="#"
                       aria-label="Facebook"
                       icon={<FaGithubSquare />}
                       variant="ghost"
@@ -58,8 +58,8 @@ function Footer() {
                   <WrapItem>
                     <Tooltip label='Twitter' hasArrow arrowSize={15} placement='top' bg="#00A9DA" py="1.5" px="4" mb="2"> 
                     <IconButton
-                      as="Link"
-                      href="#"
+                      as={RouterLink}
+                      to="#"
                       aria-label="Twitter"
                       icon={<FaTwitter />}
                       variant="ghost"
@@ -74,8 +74,8 @@ function Footer() {
                   <WrapItem>
                     <Tooltip label='LinkedIn' hasArrow arrowSize={15} placement='top' bg="#00A9DA" py="1.5" px="4" mb="2"> 
                     <IconButton
-                      as="Link"
-                      href="#"
+                      as={RouterLink}
+                      to="#"
                       aria-label="Instagram"
                       icon={<FaLinkedinIn />}
                       variant="ghost"

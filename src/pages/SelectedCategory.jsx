@@ -15,6 +15,8 @@ import SelectedCategorySkeleton from "../components/SelectedCategorySkeleton";
 import Title from "../components/Title";
 import SubHeading from "../components/SubHeading";
 import { FiMessageSquare } from "react-icons/fi";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function SelectedCategory() {
 
@@ -47,8 +49,11 @@ function SelectedCategory() {
   if(loading){
     return (
       <>
+        <Header />
+        <SubHeading title="Wall Clock Zone" subTitle={slug}/>
         <SelectedCategorySkeleton />
         <SelectedCategorySkeleton />
+        <Footer />
       </>
       
     )
@@ -56,6 +61,7 @@ function SelectedCategory() {
 
   return (
     <>
+      <Header />
       <Box fontFamily={"font-family: Open Sans"}>
         <SubHeading title="Wall Clock Zone" subTitle={slug}/>
         <Title title={slug}/>
@@ -64,7 +70,7 @@ function SelectedCategory() {
             <Box className="col-md-12" >
               {users?.length > 0 ? (
                 users.map((user) => (
-                  <Box w="full" bg="white" rounded="md" shadow="md" _dark={{ bg: "gray.800" }} mb={10}>
+                  <Box w="full" bg="white" rounded="md" shadow="md" _dark={{ bg: "gray.800" }} mb={10} key={user._id}>
                     <Flex justify="between" align="center" px={6} >
                       <VStack align="start" >
                         <Heading size="xl" fontWeight="sm" lineHeight="tight" color="gray.800" > 
@@ -121,6 +127,7 @@ function SelectedCategory() {
           </Box>
         </Box>
       </Box>
+      <Footer />
     </>
   );
 }

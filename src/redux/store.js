@@ -6,9 +6,6 @@ import { adminReducer } from "./reducer/adminReducer";
 import {chatReducer} from "./reducer/chatReducer";
 import {categoryReducer} from './reducer/categoryReducer'
 
-export const server = "https://wallclockzone.onrender.com/api/v1";
-// export const server = "localhost:2000/api/v1";
-
 const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
   reducer: {

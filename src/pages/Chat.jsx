@@ -10,6 +10,8 @@ import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import SubHeading from "../components/SubHeading";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Chat() {
   const { user } = useSelector((state) => state.user);
@@ -36,6 +38,7 @@ function Chat() {
  
   return (
     <>
+      <Header />
       <SubHeading title="Wall Clock Zone" subTitle="Messages "/>
       <Box style={{width: "100%"}}>
         <Box
@@ -50,6 +53,7 @@ function Chat() {
             {user && <ChatBox selectedData={selectedData} setSelectedData={setSelectedData}/>}
         </Box>
       </Box>
+      <Footer />
     </>
   );
 }

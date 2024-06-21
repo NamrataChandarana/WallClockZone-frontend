@@ -209,7 +209,6 @@ const SingleChat = ({notification, setNotification}) => {
                     }
                         
                     {/* message */}
-                    {/* {console.log(isTyping)} */}
                     {/* {isTyping ?
                         <span>
                           <Lottie 

@@ -40,6 +40,7 @@ function Service() {
               {services.map((service, index) => (
                 <Flex
                   direction="column"
+                  key={index}
                   align="center"
                   bg="white"
                   p={5}

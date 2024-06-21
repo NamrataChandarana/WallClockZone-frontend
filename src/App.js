@@ -21,6 +21,7 @@ import Chat from "./pages/Chat";
 import { Toaster} from 'sonner'
 import AuthLayout from "./components/AuthLayout";
 import Pagenotfound from "./pages/Pagenotfound";
+import Approval from "./pages/Approval";
 
 function App() {
 
@@ -35,6 +36,11 @@ function App() {
       <Routes>
         <Route path="/" element={
           <Home />
+        }/>
+        <Route path="/approval" element={
+          <AuthLayout>
+            <Approval />
+          </AuthLayout>
         }/>
         <Route path="/login" element={
           <Login />

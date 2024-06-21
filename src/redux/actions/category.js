@@ -1,6 +1,6 @@
-import { server } from "../store";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+const server = process.env.REACT_APP_SERVER;
 
 export const getCategories = () => async (dispatch) => {
   try {

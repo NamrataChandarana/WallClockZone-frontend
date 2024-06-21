@@ -1,11 +1,6 @@
-import { Avatar } from "@chakra-ui/avatar";
 import { Box, Text } from "@chakra-ui/layout";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-// import { ChatState } from "../../Context/ChatProvider";
 
 const UserListItem = ({user, handleFunction}) => {
-//   const data = useSelector((state) => state.chat.users)
 
   return (
     <Box
@@ -33,7 +28,7 @@ const UserListItem = ({user, handleFunction}) => {
         src={user.pic}
       /> */}
       <Box>
-        <Text>{user.firstname}</Text>
+        <Text>{user.companyname}</Text>
         <Text fontSize="xs">
           <b>Email : </b>
           {user.email}

@@ -2,12 +2,12 @@
 import React from 'react';
 import { FormControl, FormLabel, Input, Select } from '@chakra-ui/react';
 import FormErrorHandler from './FormErrorHandler';
-const FormInput = ({ label, placeholder, value, onChange, errors, readOnly, isSelect = false}) => {
+const FormInput = ({ label, placeholder, value, onChange, errors, readOnly, isSelect = false,type}) => {
   return (
     <FormControl>
       <FormLabel fontWeight="sm">{label}</FormLabel>
       {isSelect ? (
-        <Select  placeholder={placeholder} value={value} onChange={onChange} isDisabled={readOnly}>
+        <Select  placeholder={placeholder} value={value} onChange={onChange} isDisabled={readOnly} rounded="sm">
           <option value="Manufacturer">Manufacture</option>
             <option value="Wholesaler">Wholesaler</option>
             <option value="Raw material suppliers">Raw material suppliers</option>
@@ -15,7 +15,7 @@ const FormInput = ({ label, placeholder, value, onChange, errors, readOnly, isSe
             <option value="Designer">Designer</option>
         </Select>
       ) : (
-        <Input placeholder={placeholder} value={value} onChange={onChange} readOnly={readOnly} />
+        <Input placeholder={placeholder} type={type} value={value} onChange={onChange} readOnly={readOnly} rounded="sm" />
       )}
       <FormErrorHandler errors={errors} />
     </FormControl>

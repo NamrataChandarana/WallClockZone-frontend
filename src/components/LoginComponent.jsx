@@ -9,7 +9,6 @@ import {toast} from 'sonner'
 import { Box, Button, FormControl, FormLabel, Input, Text} from "@chakra-ui/react";
 import Title from "./Title";
 import SubHeading from "./SubHeading";
-import { color } from "framer-motion";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -44,7 +43,7 @@ function LoginComponent() {
     <SubHeading title={"Wall Clock Zone"} subTitle={"User Login"}/>
     <Title title="Sign In"/>
     {/* <Box color="gray.500" textAlign={"center"} mb={"20px"}>Login with id & password </Box> */}
-    <Box display="flex" alignItems="center" justifyContent="center" px={{ base: 6, xl: 10 }} mb="10" >
+    <Box display="flex"  justifyContent="center" px={{ base: 6, xl: 10 }} mb="10" >
       <Box mx="auto" w="350px" p={5} borderWidth="1px" borderRadius="md" borderColor="gray.200">
         <Box as="form" spacing={4} pt={5}>
           <FormControl>

@@ -1,8 +1,6 @@
-import { server } from "../store";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-// import { Socket } from "socket.io-client";
-// import { searchReducer } from "../reducer/searchReducer";
+const server = process.env.REACT_APP_SERVER;
 
 var socket;
 export const searchChatUser = (search = "") => async (dispatch) => {
@@ -39,7 +37,6 @@ export const accessChatUser = (userId = "") => async (dispatch) => {
           withCredentials: true,
         }
       );
-      console.log(data)
       dispatch({ type: "accessChatSuccess", payload: data });
       // toast.success("show");
     } catch (error) {
@@ -69,7 +66,6 @@ export const fetchChatUser =() => async (dispatch) => {
 };
 
 export const sendMsgUser = (selectedData, newMessage) => async (dispatch) => {
-  // console.log(selectedData, newMessage)
     try {
       dispatch({ type: "sendMsgRequest" });
       const { data } = await axios.post(

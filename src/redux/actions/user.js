@@ -1,7 +1,6 @@
-import { server } from "../store";
 import axios from "axios";
-// import { toast } from "react-hot-toast";
 import {toast} from 'sonner'
+const server = process.env.REACT_APP_SERVER;
 
 export const login = (email, password) => async (dispatch) => {
 
@@ -97,7 +96,6 @@ export const registeration =
           withCredentials: true,
         }
       );
-      console.log(data);
       dispatch({ type: "registerSuccess", payload: data });
       toast.success("Successfully Register");
     } catch (error) {

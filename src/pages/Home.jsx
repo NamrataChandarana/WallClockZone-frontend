@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUser } from "../redux/actions/user";
-import { Box, Flex, Image, Input, Textarea, Button, FormControl, FormLabel, Text, Stack } from '@chakra-ui/react';
+import { Box, Flex, Image, Input, Textarea, Button, FormControl, FormLabel, Text, Stack, Link } from '@chakra-ui/react';
 import { FaCheck, FaChevronRight, FaPhoneAlt } from "react-icons/fa";
 import Title from "../components/Title";
 import Carousels from "../components/Carousels";
 import Service from "../components/Service";
 import { MdMyLocation} from "react-icons/md";
 import { MdEmail } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import ContactSec from "../components/ContactSec";
 
 function Home() {
 
@@ -65,7 +66,7 @@ function Home() {
             </Stack>
             <Box width={"9rem"}>
               <Flex>
-                <Link to="/about"> 
+                <Link as={RouterLink} to="/about"> 
                   <Button type="submit" gap="5" pl="10" pr='0' width="full" mt={1} bg={"#00A9DA"} _hover={"#048fb6"} color="white" rounded="sm">
                     Learn More
                     <Box bg="#0398c2" color="white" alignSelf="center" p="3"><FaChevronRight /></Box>
@@ -79,7 +80,7 @@ function Home() {
       {/* ======= Services Section ======= */}
       <Service/>
       {/* ======= cta Section ======= */}
-      {/* <section id="cta" className="cta">
+      <section id="cta" className="cta">
         <div className="container" data-aos="zoom-in">
           <div className="row">
             <div className="col-lg-9 text-center text-lg-start">
@@ -93,7 +94,7 @@ function Home() {
             </div>
             <Box width={"5rem"} mx={{base:"auto", lg:"10"}}>
               <Flex>
-                <Link to="/register"> 
+                <Link as={RouterLink} to="/register"> 
                   <Button type="submit" gap="5" pl="5" pr='0' width="full" mt={1} bg={"white"} _hover={"#76cfe7"} color="#0398c2" rounded="sm" >
                     Register Now
                     <Box bg="#0398c2" color="white" alignSelf="center" p="3"><FaChevronRight /></Box>
@@ -103,9 +104,9 @@ function Home() {
             </Box>
           </div>
         </div>
-      </section> */}
+      </section>
       {/* ======= Contact Section ======= */}
-      <Box >
+      {/* <Box >
         <Box className="container"  mx="auto"> 
           <Title title="Contact"/>
           <FormControl>
@@ -151,7 +152,8 @@ function Home() {
           </Box>
           </FormControl>
         </Box>
-      </Box>
+      </Box> */}
+      <ContactSec/>
       <Footer />
     </>
   );

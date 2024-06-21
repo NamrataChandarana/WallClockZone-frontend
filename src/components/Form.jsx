@@ -24,15 +24,17 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
             <Grid templateColumns={{sm:"repeat(2, 1fr)"}} gap={4}>
               <FormInput 
                 label="Business Name" 
+                type="text"
                 placeholder="Your Business Name" 
-                value={inputs.state} 
-                onChange={(e) => setInputs({...inputs, state:e.target.value})} 
-                readOnly={readonly} 
+                value={inputs.companyname} 
+                onChange={(e) => setInputs({...inputs, companyname:e.target.value})} 
+                readOnly={readonly}
                 errors={errors.state}
               />
               <FormInput 
                 label="Business Type" 
                 placeholder="Select Business Type" 
+                type="text"
                 value={inputs.category} 
                 onChange={(e) => setInputs({...inputs, category:e.target.value})} 
                 readOnly={readonly} 
@@ -43,6 +45,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
             <Grid templateColumns={{sm:"repeat(2, 1fr)"}} gap={4} mt={4}>
               <FormInput 
                 label="Business city" 
+                type="text"
                 placeholder="Your Business city" 
                 value={inputs.city} 
                 onChange={(e) => setInputs({...inputs, city:e.target.value})} 
@@ -51,6 +54,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
               />
               <FormInput 
                 label="Business State" 
+                type="text"
                 placeholder="Your Business State" 
                 value={inputs.state} 
                 onChange={(e) => setInputs({...inputs, state:e.target.value})} 
@@ -60,6 +64,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
             </Grid>
             <FormInput 
                 label="Business Address" 
+                type="text"
                 placeholder="Your Business Address" 
                 value={inputs.address} 
                 onChange={(e) => setInputs({...inputs, address:e.target.value})} 
@@ -68,6 +73,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
               />
             <FormInput 
                 label="Business Website" 
+                type="url"
                 placeholder="Your Business Website" 
                 value={inputs.website} 
                 onChange={(e) => setInputs({...inputs, website:e.target.value})} 
@@ -76,6 +82,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
               />
             <FormInput 
                 label="Business phone" 
+                type="number"
                 placeholder="Your Business phone" 
                 value={inputs.phoneNo} 
                 onChange={(e) => setInputs({...inputs, phoneNo:e.target.value})} 
@@ -88,6 +95,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
             <Grid templateColumns={{sm:"repeat(2, 1fr)"}} gap={4}>
               <FormInput 
                 label="First Name" 
+                type="text"
                 placeholder="First Name" 
                 value={inputs.firstname} 
                 onChange={(e) => setInputs({...inputs, firstname:e.target.value})} 
@@ -106,6 +114,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
             <Grid templateColumns={{sm:"repeat(2, 1fr)"}} gap={4} mt={4}>
               <FormInput 
                 label="Username" 
+                type="text"
                 placeholder="Your Username" 
                 value={inputs.username} 
                 onChange={(e) => setInputs({...inputs, username:e.target.value})} 
@@ -114,6 +123,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
               />
               <FormInput 
                 label="Your Email" 
+                type="email"
                 placeholder="Your Email" 
                 value={inputs.email} 
                 onChange={(e) => setInputs({...inputs, email:e.target.value})} 
@@ -125,12 +135,13 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
               isRegistration ?   
               <FormInput 
               label="Password" 
+              type="password"
               placeholder="*********" 
               value={inputs.password} 
               onChange={(e) => setInputs({...inputs, password:e.target.value})} 
               readOnly={readonly} 
               errors={errors.password}
-            />: null
+            /> : null
             }
           </Box>
         </Grid>

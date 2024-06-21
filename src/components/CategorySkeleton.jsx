@@ -21,6 +21,7 @@ const CategorySkeleton = () => {
                  {categories.map((category) => (
                     <Box
                         className="animate-pulse"
+                        key={category._id}
                         m={3}
                         rounded="md"
                         shadow="md"

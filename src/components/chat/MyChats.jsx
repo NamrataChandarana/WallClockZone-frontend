@@ -18,7 +18,6 @@ const MyChats = ({selectedData , setSelectedData}) => {
   const selecteddata = useSelector(state => state?.chat?.Messages);
   const dispatch = useDispatch();
   const {user} = useSelector(state => state.chat);
-  console.log(user);
 
   function fetchChat(){
     dispatch(fetchChatUser());
@@ -104,7 +103,7 @@ const MyChats = ({selectedData , setSelectedData}) => {
                 </Text>
                 {chat.latestMessage && (
                   <Text fontSize="xs" >
-                    <b>{chat?.latestMessage?.sender?.firstname  }  </b>
+                    <b>{chat?.latestMessage?.sender?.firstname}</b>
                     {chat.latestMessage.content.length > 50
                       ? chat.latestMessage.content.substring(0, 51) + "..." :  chat.latestMessage.content}
 

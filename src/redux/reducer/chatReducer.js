@@ -47,14 +47,11 @@ export const chatReducer = createReducer({users: []},{
         state.error = null;
       },
       fetchMsgSuccess: (state, action) => {
-        console.log(action.payload);
         state.loading = false;
         state.error = null;
         state.Messages = action.payload;
       },
       fetchMsgFail: (state, action) => {
-        console.log(state);
-        console.log(action.payload);
         state.loading = false;
         state.error = action.payload;
       },
@@ -63,13 +60,11 @@ export const chatReducer = createReducer({users: []},{
         state.error = null;
       },
       sendMsgSuccess: (state, action) => {
-        console.log(action)
         state.loading = false;
         state.error = null;
         state.sendMsg = action.payload;
       },
       sendMsgFail: (state, action) => {
-        console.log(state)
         state.loading = false;
         state.error = action.payload;
       },
