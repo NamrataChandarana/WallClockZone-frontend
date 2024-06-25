@@ -22,8 +22,8 @@ const Approval = () => {
                 />
             </Box>
             <Flex className="col-lg-12" flexDirection={'column'} justifyContent="center" alignItems="center" gap="3">
-                <Text fontSize="4xl" placeContent="center">Registration Successful!</Text>
-                <Text fontSize="xl" width="37rem" textAlign="center">We will contact you shortly. Once confirmed, your business will be visible to other users, who can then contact you directly.</Text>
+                <Text fontSize={{base:"md",md:"2xl",lg:"4xl"}} placeContent="center">Registration Successful!</Text>
+                <Text fontSize={{base:"sm", md:"md", lg:"xl"}} width="37rem" textAlign="center">We will contact you shortly. Once confirmed, your business will be visible to other users, who can then contact you directly.</Text>
                 <Text>You can check your visiblity <Link as={RouterLink} to="/profile" color="blue.500">Here</Link></Text>
             </Flex>
         </Box>

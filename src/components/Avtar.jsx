@@ -1,7 +1,5 @@
-import { Box, useColorMode } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 const Avtar = ({name}) => {
-    const { colorMode } = useColorMode();
-
     return(
         <>
             <Box
@@ -19,10 +17,7 @@ const Avtar = ({name}) => {
                 {name.split(" ").map(word => word.charAt(0).toUpperCase()).join("")}
               </Box>
             </Box>
-        
         </>
-       
-        
     )
 }
 

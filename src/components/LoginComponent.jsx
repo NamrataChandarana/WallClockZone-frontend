@@ -22,7 +22,7 @@ function LoginComponent() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if(email == "" || password =="") {
+    if(email === "" || password === "") {
       toast.error("Please fill all the inputs")
       return;
     }
@@ -33,7 +33,7 @@ function LoginComponent() {
     if (isAuthenticated) {
       dispatch(loadUser());
     }
-  },[])
+  },[dispatch, isAuthenticated])
 
   if (isAuthenticated) return <Navigate to="/" />;
 

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { loadUser } from "../redux/actions/user";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Box, Flex, Button, Text } from '@chakra-ui/react';
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import Title from "../components/Title";
 import { useState } from "react";
 import Form from "../components/Form";
@@ -15,7 +15,6 @@ import SubHeading from "../components/SubHeading";
 
 function Profile() {
   const { user } = useSelector((state) => state.user);
-  const { isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [inputs , setInputs] = useState({

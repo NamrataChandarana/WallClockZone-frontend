@@ -151,8 +151,8 @@ export const updateprofile =
       return true
     } catch (error) {
       dispatch({ type: "updateprofileFail", payload: error });
-      return false
       toast.error(error.response.data.message);
+      return false
     }
   };
 
@@ -170,6 +170,7 @@ export const logout = () => async (dispatch) => {
     toast.error(error.response.data.message);
   }
 };
+
 export const forgetPassword = (email) => async (dispatch) => {
   try {
     dispatch({ type: "forgetPasswordRequest" });

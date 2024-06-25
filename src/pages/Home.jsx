@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loadUser } from "../redux/actions/user";
-import { Box, Flex, Image, Input, Textarea, Button, FormControl, FormLabel, Text, Stack, Link } from '@chakra-ui/react';
-import { FaCheck, FaChevronRight, FaPhoneAlt } from "react-icons/fa";
+import { Box, Flex, Image, Button, Text, Stack, Link } from '@chakra-ui/react';
+import { FaChevronRight, FaPhoneAlt } from "react-icons/fa";
 import Title from "../components/Title";
 import Carousels from "../components/Carousels";
 import Service from "../components/Service";
@@ -18,7 +18,7 @@ function Home() {
   const dispatch = useDispatch();
   useEffect(() =>{
     dispatch(loadUser())
-  },[])
+  },[dispatch])
 
   return (
     <>

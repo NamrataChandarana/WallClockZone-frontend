@@ -22,7 +22,7 @@ const AuthLayout = ({ userRole= false, children}) => {
         return;
     }
     setLoader(false)
-    },[navigate, isAuthenticated]) 
+    },[navigate, isAuthenticated, isAdmin, userRole]) 
 
     return loader ?  
     <Box display="flex" placeContent="center">

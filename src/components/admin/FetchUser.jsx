@@ -1,25 +1,18 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { deleteUser } from '../../redux/actions/admin';
-import { Box, Flex,Text } from '@chakra-ui/react';
-import { Tfoot, Tr, Th, Td,Thead, TableContainer, TableCaption, Table, Tbody} from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
+import { Tr, Th, Td,Thead, TableContainer, Table, Tbody} from '@chakra-ui/react';
 import { useSelector } from "react-redux";
-import { useState } from 'react';
 import { admingetapprovedUser } from '../../redux/actions/admin';
 import AdminAction from './AdminAction';
 
 function FetchUser () {
     const dispatch = useDispatch();
-    // const [keyword] = useState("");
-    const { users, isAuthenticated, message } = useSelector((state) => state.admin);
-
-    function handleDelete(userKey){
-      const res = dispatch(deleteUser(userKey))
-    }
+    const { users, message } = useSelector((state) => state.admin);
 
     useEffect(() => {
       dispatch(admingetapprovedUser());
-    }, [users, message]);
+    }, [users, message, dispatch]);
 
     return (
       <>
@@ -51,7 +44,6 @@ function FetchUser () {
                       <Td>
                         <AdminAction id={user._id} status={user.status}/>
                       </Td>
-                      
                     </Tr>
                   ))
                 }

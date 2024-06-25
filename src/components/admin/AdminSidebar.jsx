@@ -1,6 +1,5 @@
 import React from 'react'
 import { Box, Flex} from "@chakra-ui/react";
-import { FaUser } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 

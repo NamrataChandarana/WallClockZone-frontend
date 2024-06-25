@@ -11,8 +11,7 @@ import {
     DrawerCloseButton,
   } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react';
-import { Input, Toast } from '@chakra-ui/react';
-import axios from 'axios';
+import { Input } from '@chakra-ui/react';
 import ChatLoading from './ChatLoading';
 import UserListItem from './userAvatar/UserListItem';
 import { useDispatch, useSelector } from 'react-redux';
@@ -54,8 +53,8 @@ const SideBar = () => {
         });
         }
     }
-    const selecteddata = useSelector(state => state?.chat?.chatData?.users);
-    const selecteduser = useSelector(state => state?.chat?.chatData);
+    // const selecteddata = useSelector(state => state?.chat?.chatData?.users);
+    // const selecteduser = useSelector(state => state?.chat?.chatData);
   
   return (
     <Box >

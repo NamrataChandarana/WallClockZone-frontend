@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { admingetallUser } from "../../redux/actions/admin";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -14,14 +13,14 @@ import {Tr, Th, Td,Thead, TableContainer, Table, Tbody} from '@chakra-ui/react';
 import AdminAction from "../../components/admin/AdminAction";
 
 function Adminalluser() {
-  const [keyword, setkeyword] = useState("");
+  // const [keyword, setkeyword] = useState("");
   const dispatch = useDispatch();
   const { users, isAuthenticated, message } = useSelector((state) => state.admin);
 
  
   useEffect(() => {
     dispatch(admingetallUser());
-  }, [message,users]);
+  }, [message,users,dispatch]);
 
   if (isAuthenticated) return <Navigate to="/admin/dashboard" />
 

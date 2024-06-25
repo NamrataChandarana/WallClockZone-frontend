@@ -1,6 +1,6 @@
 import React from 'react'
-import { Flex, Text,Button } from '@chakra-ui/react'
-import { admingetapprovedUser, deleteUser, updateUserStatus } from '../../redux/actions/admin'
+import { Flex } from '@chakra-ui/react'
+import { deleteUser, updateUserStatus } from '../../redux/actions/admin'
 import { useDispatch } from 'react-redux'
 import AlertDialogComp from './AlertDialog'
 

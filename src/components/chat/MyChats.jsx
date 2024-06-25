@@ -12,19 +12,15 @@ import { accessChatUser } from '../../redux/actions/chat';
 import ChatLoading from './ChatLoading';
 const MyChats = ({selectedData , setSelectedData}) => {
 
-  const [selectedChat, setSelectedChat] = useState(null)
+  // const [selectedChat, setSelectedChat] = useState(null)
   const [loadingChat , setLoadingChat] = useState(false)
   const loggedUser = useSelector((state) => state?.user)
   const selecteddata = useSelector(state => state?.chat?.Messages);
   const dispatch = useDispatch();
   const {user} = useSelector(state => state.chat);
 
-  function fetchChat(){
-    dispatch(fetchChatUser());
-  }
-
   useEffect(()=>{
-    fetchChat();
+    dispatch(fetchChatUser());
   },[dispatch, selecteddata])
   
   function accessChat(userId){
@@ -35,6 +31,10 @@ const MyChats = ({selectedData , setSelectedData}) => {
     }catch (error) {
     toast({ title: "Error fetching the chat" });
     }
+  }
+
+  if(loadingChat){
+    <ChatLoading />
   }
  
   return (

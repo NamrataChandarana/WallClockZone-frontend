@@ -2,8 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Profile from "./pages/Profile";
 import Category from "./pages/Category";
 import Updateprofile from "./pages/Updateprofile";

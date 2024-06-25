@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 const server = process.env.REACT_APP_SERVER;
 
-var socket;
+// var socket;
 export const searchChatUser = (search = "") => async (dispatch) => {
     try {
       dispatch({ type: "searchChatRequest" });

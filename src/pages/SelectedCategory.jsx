@@ -28,7 +28,7 @@ function SelectedCategory() {
 
   useEffect(() => {
     dispatch(searchUser(slug));
-  }, [slug]);
+  }, [slug, dispatch]);
 
 
   function accessChat(userId){

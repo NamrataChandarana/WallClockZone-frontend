@@ -4,7 +4,7 @@ import {  Link as RouterLink } from "react-router-dom";
 import "./style/style.css";
 import { logout } from "../redux/actions/user";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer, Link, textDecoration } from '@chakra-ui/react';
+import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer, Link } from '@chakra-ui/react';
 import { FaAlignJustify } from "react-icons/fa";
 import Avtar from "./Avtar";
 import {
