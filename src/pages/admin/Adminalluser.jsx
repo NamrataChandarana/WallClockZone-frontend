@@ -20,7 +20,7 @@ function Adminalluser() {
  
   useEffect(() => {
     dispatch(admingetallUser());
-  }, [message,users,dispatch]);
+  }, [message, dispatch]);
 
   if (isAuthenticated) return <Navigate to="/admin/dashboard" />
 

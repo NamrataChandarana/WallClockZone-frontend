@@ -53,12 +53,17 @@ function Header() {
                 {user && <Avtar name={`${user.firstname} ${user.lastname}`}/>}
               </MenuButton>
               <MenuList color={"black"} zIndex="999">
-                <Link as={RouterLink} to={'/profile'} style={{textDecoration:"none"}}>
-                  <MenuItem >Profile</MenuItem>
-                </Link>
-                <Link as={RouterLink} to={'/updateprofile'} style={{textDecoration:"none"}} >
-                  <MenuItem>Edit Profile</MenuItem>
-                </Link>
+                {
+                  user && user.role === "admin" ? null :
+                  <>
+                    <Link as={RouterLink} to={'/profile'} style={{textDecoration:"none"}}>
+                      <MenuItem >Profile</MenuItem>
+                    </Link>
+                    <Link as={RouterLink} to={'/updateprofile'} style={{textDecoration:"none"}} >
+                      <MenuItem>Edit Profile</MenuItem>
+                    </Link>
+                  </>
+                }
                 <Link as={RouterLink} to={'/chat'} style={{textDecoration:"none"}}>
                   <MenuItem>Message</MenuItem>
                 </Link>

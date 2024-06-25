@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import AlertDialogComp from './AlertDialog'
 import { accessChatUser } from '../../redux/actions/chat'
 import {toast} from 'sonner'
+import { Link as RouterLink } from 'react-router-dom'
 
 const AdminAction = ({id, status}) => {
 
@@ -37,7 +38,7 @@ const AdminAction = ({id, status}) => {
   return (
     <>
         <Flex gap="2" pt="5">
-          <Link to={'/chat'} >
+          <Link as={RouterLink} to={'/chat'} >
             <Button bg="blue.500" size="sm" color="white" _hover={{bg:"blue.600"}} rounded="md" p="4" onClick={() => { accessChat(id)}}>Message</Button>
           </Link>
           <AlertDialogComp label={status ? "Disapprove" : "Approve" } onClickFunc={() => handleApprove()} color="green.500" />
