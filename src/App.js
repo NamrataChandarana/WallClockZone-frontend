@@ -8,7 +8,7 @@ import Updateprofile from "./pages/Updateprofile";
 import About from "./pages/About";
 import { useEffect } from "react";
 import { loadUser } from "./redux/actions/user";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "./pages/admin/Dashboard";
 import Adminalluser from "./pages/admin/Adminalluser";
 import Admingetapproveduser from "./pages/admin/Admingetapproveduser";
@@ -24,10 +24,13 @@ import Approval from "./pages/Approval";
 function App() {
 
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.user);
+  
 
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
+  
 
   return (
     <Router>
@@ -46,16 +49,21 @@ function App() {
         <Route path="/register" element={
           <Register />
         } />
-        <Route path="/profile" element={
-        <AuthLayout>
-            <Profile />
-        </AuthLayout>
-        } />
-        <Route path="/updateprofile" element={
-        <AuthLayout>
-            <Updateprofile />
-        </AuthLayout>
-        } />
+        {
+          user && user.role === "admin" ? null :
+          <>
+            <Route path="/profile" element={
+              <AuthLayout>
+                  <Profile />
+              </AuthLayout>
+            }/>
+            <Route path="/updateprofile" element={
+              <AuthLayout>
+                  <Updateprofile />
+              </AuthLayout>
+            }/>
+          </>
+        }
         <Route path="/category" element={
           <Category />
         } />
