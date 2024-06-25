@@ -45,7 +45,7 @@ const AdminHeader = () => {
                   <MenuItem>Home</MenuItem>
                 </Link>
                 <Link to={'/chat'}>
-                  <MenuItem>Change password</MenuItem>
+                  <MenuItem>Messages</MenuItem>
                 </Link>
                 <Link to={'/admin/dashboard'}>
                   <MenuItem>Dashboard</MenuItem>
