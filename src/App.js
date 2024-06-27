@@ -28,11 +28,13 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const { loading } = useSelector((state) => state.user);
+  const {isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(loadUser());
-  }, [dispatch]);
+    if(isAuthenticated){
+      dispatch(loadUser());
+    }
+  }, [isAuthenticated]);
   
 
   return (
