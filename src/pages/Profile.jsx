@@ -11,6 +11,7 @@ import { FaEdit } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SubHeading from "../components/SubHeading";
+import { loadUser } from "../redux/actions/user";
 
 function Profile() {
   const { user } = useSelector((state) => state.user);
@@ -52,6 +53,10 @@ function Profile() {
   const handleUpdateClick = () => {
     navigate('/updateprofile');
   };
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
 
   return (
     <div>

@@ -22,10 +22,8 @@ function Home() {
   
 
   useEffect(()=> {
-    if (isAuthenticated) {
-      dispatch(loadUser());
-    }
-  },[isAuthenticated])
+    dispatch(loadUser());
+  },[dispatch])
   
   return loading ? (
     <Box minH="100vh" width="full" display="flex" alignItems="center" justifyContent="center">
