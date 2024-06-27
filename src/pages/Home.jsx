@@ -18,12 +18,14 @@ import { Puff } from "react-loader-spinner";
 function Home() {
 
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.user);
+  const { isAuthenticated, loading } = useSelector((state) => state.user);
   
 
   useEffect(()=> {
-    dispatch(loadUser());
-  },[dispatch])
+    if (isAuthenticated) {
+      dispatch(loadUser());
+    }
+  },[isAuthenticated])
   
   return loading ? (
     <Box minH="100vh" width="full" display="flex" alignItems="center" justifyContent="center">
