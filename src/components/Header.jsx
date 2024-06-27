@@ -4,9 +4,10 @@ import {  Link as RouterLink } from "react-router-dom";
 import "./style/style.css";
 import { logout } from "../redux/actions/user";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer, Link } from '@chakra-ui/react';
+import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer, Link, SkeletonCircle} from '@chakra-ui/react';
 import { FaAlignJustify } from "react-icons/fa";
 import Avtar from "./Avtar";
+
 import {
   Menu,
   MenuButton,
@@ -16,7 +17,7 @@ import {
 import TopHeader from "./TopHeader";
 
 function Header() {
-  const { isAuthenticated,  user } = useSelector((state) => state.user);
+  const { isAuthenticated, loading,  user } = useSelector((state) => state.user);
   const { isOpen, onToggle } = useDisclosure();
   
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ function Header() {
             isAuthenticated ? 
             <Menu >
               <MenuButton mt="3">
-                {user && <Avtar name={`${user.firstname} ${user.lastname}`}/>}
+              { user && <Avtar name={`${user.firstname} ${user.lastname}`} />}
               </MenuButton>
               <MenuList color={"black"} zIndex="999">
                 {
@@ -77,6 +78,7 @@ function Header() {
               </MenuList>
             </Menu>
             :
+            loading ? <SkeletonCircle size='10' mt="2" ml="4"/> : (
             <Flex alignitems="center" gap="2" display={{ base: 'none', md: 'flex' }} width="full" mt="4" ml="1">
               <Link as={RouterLink} to={'/login'} style={{textDecoration:"none"}} >
                 <Text  px='4' rounded="md" py='2'  _hover={{color:"#00A9DA", bg: "gray.100", py:'2'}} color="gray.900" >Signin</Text>
@@ -84,7 +86,8 @@ function Header() {
               <Link as={RouterLink} to={'/register'} style={{textDecoration:"none"}} >
                 <Text px="4" py='2' color="white" rounded="md" bg="#00A9DA" >Register &rarr;</Text>
               </Link>
-            </Flex>
+            </Flex>)
+
           }
             <Button variant="ghost" size="icon" rounded="full" display={{ base: 'flex', md: 'none' }} onClick={onToggle} >
               <FaAlignJustify />

@@ -89,7 +89,7 @@ function Profile() {
           user && 
           <>
             <Form inputs={inputs} setInputs={setInputs} errors='' readonly = "true" isRgistration="false"/>
-            <Box width={"7rem"} mx={{xl: "370px",  base: "5" }}>
+            <Box width={"7rem"} mx={{xl: "290px",  base: "5" }}>
               <Flex>
                 <Button type="submit" gap="5" pl="10" pr='0' width="full" mt={1} bg={"#00A9DA"} _hover={"#048fb6"} color="white" rounded="sm" onClick={handleUpdateClick}>
                   Edit

@@ -13,29 +13,16 @@ import Footer from "../components/Footer";
 import ContactSec from "../components/ContactSec";
 import { useEffect } from "react";
 import { loadUser } from "../redux/actions/user";
-import { Puff } from "react-loader-spinner";
 
 function Home() {
 
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.user);
-  
 
   useEffect(()=> {
     dispatch(loadUser());
   },[dispatch])
   
-  return loading ? (
-    <Box minH="100vh" width="full" display="flex" alignItems="center" justifyContent="center">
-      <Puff
-        visible={true}
-        height="80"
-        width="80"
-        color="#00A9DA"
-        ariaLabel="puff-loading"
-      />
-    </Box> ) :
-     (
+  return (
       <>
         <Header />
         {/* ======= Hero Section ======= */}
