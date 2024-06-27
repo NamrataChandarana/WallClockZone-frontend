@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { loadUser, login } from "../redux/actions/user";
+import {  login } from "../redux/actions/user";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -28,12 +28,6 @@ function LoginComponent() {
     }
     dispatch(login(email, password));
   };
-
-  useEffect(()=> {
-    if (isAuthenticated) {
-      dispatch(loadUser());
-    }
-  },[dispatch, isAuthenticated])
 
   if (isAuthenticated) return <Navigate to="/" />;
 

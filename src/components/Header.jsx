@@ -4,7 +4,7 @@ import {  Link as RouterLink } from "react-router-dom";
 import "./style/style.css";
 import { logout } from "../redux/actions/user";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer, Link, Spinner } from '@chakra-ui/react';
+import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer, Link } from '@chakra-ui/react';
 import { FaAlignJustify } from "react-icons/fa";
 import Avtar from "./Avtar";
 import {
@@ -14,6 +14,7 @@ import {
   MenuItem,
 } from '@chakra-ui/react'
 import TopHeader from "./TopHeader";
+import { Puff } from "react-loader-spinner";
 
 function Header() {
   const { isAuthenticated, loading, user } = useSelector((state) => state.user);
@@ -26,9 +27,17 @@ function Header() {
  
   if(loading){
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
-        <Spinner size="xl" />
-      </Box>
+      <Box  minH="100vh" width="full" display="flex" alignItems="center" justifyContent="center">
+        <Puff
+          visible={true}
+          height="80"
+          width="80"
+          color="#00A9DA"
+          ariaLabel="puff-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </Box> 
     );
   }
 

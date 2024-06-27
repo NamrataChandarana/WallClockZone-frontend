@@ -11,9 +11,17 @@ import { Link as RouterLink } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ContactSec from "../components/ContactSec";
+import { useEffect } from "react";
+import { loadUser } from "../redux/actions/user";
 
 function Home() {
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+  
   return (
     <>
       <Header />

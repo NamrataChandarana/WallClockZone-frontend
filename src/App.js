@@ -37,96 +37,76 @@ function App() {
 
   return (
     <Router>
-      {
-        loading ? (  
-          <Box  minH="100vh" width="full" display="flex" alignItems="center" justifyContent="center">
-            <Puff
-              visible={true}
-              height="80"
-              width="80"
-              color="#00A9DA"
-              ariaLabel="puff-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-
-
-            />
-          </Box>  ) : (
-          <>
-             <Routes>
-                <Route path="/" element={
-                  <Home />
-                }/>
-                <Route path="/approval" element={
-                  <AuthLayout>
-                    <Approval />
-                  </AuthLayout>
-                }/>
-                <Route path="/login" element={
-                  <Login />
-                } />
-                <Route path="/register" element={
-                  <Register />
-                } />
-                <Route path="/profile" element={
-                <AuthLayout>
-                    <Profile />
-                </AuthLayout>
-                } />
-                <Route path="/updateprofile" element={
-                <AuthLayout>
-                    <Updateprofile />
-                </AuthLayout>
-                } />
-                <Route path="/category" element={
-                  <Category />
-                } />
-                <Route path="/category/:slug" element={
-                  <SelectedCategory />
-                } />
-                <Route path="/about" element={
-                  <About />
-                } />
-                {/* isAuthenticate ? <Navigate to="/myprofile" /> : */}
-                <Route path="/forgetPassword" element={
-                <AuthLayout >
-                    <ForgetPassword />
-                </AuthLayout>
-                } />
-                <Route path="/resetPassword/:token" element={
-                <AuthLayout >
-                    <ResetPassword />
-                </AuthLayout>
-                } />
-                <Route path="/admin/dashboard" element={
-                <AuthLayout userRole ={true}>
-                   <Dashboard />
-                </AuthLayout>
-               } />
-                <Route path="*" element={
-                  <Pagenotfound />
-                } />
-                <Route path="/getallusers" element={
-                <AuthLayout userRole={true}>
-                  <Adminalluser />
-                </AuthLayout>
-                } />
-                <Route path="/getapprovedusers" element={
-                <AuthLayout userRole={true}>
-                  <Admingetapproveduser />
-                </AuthLayout>
-                } />
-                <Route path="/chat" element={
-                <AuthLayout>
-                  <Chat />
-                </AuthLayout>
-                } />
-              </Routes>
-              <Toaster position="top-center" />
-          </>
-        )
-      }
-     
+      <Routes>
+        <Route path="/" element={
+          <Home />
+        }/>
+        <Route path="/approval" element={
+          <AuthLayout>
+            <Approval />
+          </AuthLayout>
+        }/>
+        <Route path="/login" element={
+          <Login />
+        } />
+        <Route path="/register" element={
+          <Register />
+        } />
+        <Route path="/profile" element={
+        <AuthLayout>
+            <Profile />
+        </AuthLayout>
+        } />
+        <Route path="/updateprofile" element={
+        <AuthLayout>
+            <Updateprofile />
+        </AuthLayout>
+        } />
+        <Route path="/category" element={
+          <Category />
+        } />
+        <Route path="/category/:slug" element={
+          <SelectedCategory />
+        } />
+        <Route path="/about" element={
+          <About />
+        } />
+        {/* isAuthenticate ? <Navigate to="/myprofile" /> : */}
+        <Route path="/forgetPassword" element={
+        <AuthLayout >
+            <ForgetPassword />
+        </AuthLayout>
+        } />
+        <Route path="/resetPassword/:token" element={
+        <AuthLayout >
+            <ResetPassword />
+        </AuthLayout>
+        } />
+        <Route path="/admin/dashboard" element={
+        <AuthLayout userRole ={true}>
+           <Dashboard />
+        </AuthLayout>
+       } />
+        <Route path="*" element={
+          <Pagenotfound />
+        } />
+        <Route path="/getallusers" element={
+        <AuthLayout userRole={true}>
+          <Adminalluser />
+        </AuthLayout>
+        } />
+        <Route path="/getapprovedusers" element={
+        <AuthLayout userRole={true}>
+          <Admingetapproveduser />
+        </AuthLayout>
+        } />
+        <Route path="/chat" element={
+        <AuthLayout>
+          <Chat />
+        </AuthLayout>
+        } />
+      </Routes>
+      <Toaster position="top-center" />
     </Router>
   );
 }

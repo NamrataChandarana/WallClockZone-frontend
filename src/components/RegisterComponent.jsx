@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useDispatch } from "react-redux";
 import { registeration } from "../redux/actions/user";
 import { useSelector } from "react-redux";
@@ -12,7 +12,6 @@ import { FaCheck } from "react-icons/fa";
 import { Flex } from "@chakra-ui/react";
 import Footer from "./Footer";
 import Header from "./Header";
-import { loadUser } from "../redux/actions/user";
 
 function RegisterComponent() {
   const [inputs , setInputs] = useState({
@@ -75,13 +74,6 @@ function RegisterComponent() {
       setErrors(res);
     } 
   };
-
-  useEffect(()=> {
-    if (isAuthenticated) {
-      dispatch(loadUser());
-    }
-  },[dispatch, isAuthenticated])
-
 
   if (isAuthenticated) return <Navigate to="/approval" />;
 
