@@ -18,7 +18,7 @@ import { Puff } from "react-loader-spinner";
 function Home() {
 
   const dispatch = useDispatch();
-  const { isAuthenticated, loading } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.user);
   
 
   useEffect(()=> {
@@ -34,7 +34,8 @@ function Home() {
         color="#00A9DA"
         ariaLabel="puff-loading"
       />
-    </Box> ) : (
+    </Box> ) :
+     (
       <>
         <Header />
         {/* ======= Hero Section ======= */}

@@ -20,21 +20,14 @@ import { Toaster} from 'sonner'
 import AuthLayout from "./components/AuthLayout";
 import Pagenotfound from "./pages/Pagenotfound";
 import Approval from "./pages/Approval";
-import { useSelector } from "react-redux";
-import { Box } from "@chakra-ui/react";
-import { Puff } from "react-loader-spinner";
 
 function App() {
 
   const dispatch = useDispatch();
 
-  const {isAuthenticated } = useSelector((state) => state.user);
-
   useEffect(() => {
-    if(isAuthenticated){
-      dispatch(loadUser());
-    }
-  }, [isAuthenticated]);
+    dispatch(loadUser());
+  }, [dispatch]);
   
 
   return (
