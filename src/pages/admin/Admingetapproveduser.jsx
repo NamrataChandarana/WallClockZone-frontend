@@ -1,15 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Box, Flex} from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
 import AdminHeader from "../../components/admin/AdminHeader";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 import AdminFooter from "../../components/admin/AdminFooter";
 import FetchUser from "../../components/admin/FetchUser";
+import { Text, Box, Flex }  from '@chakra-ui/react';
+
 function Admingetapproveduser() {
+  
   const { users } = useSelector((state) => state.admin);
 
-  return (
+  return ( 
     <>
         <AdminHeader/>
         <Flex gap="5">
@@ -21,24 +22,24 @@ function Admingetapproveduser() {
                 <Text color="white" fontSize="lg" py="2" px="5">User List</Text>
               </Box>
             </Box>
-            <div className="col-md-12 ">
-            {users && users.length > 0 ? (
-                <FetchUser/>
-            ): (
-              <h1
-                style={{
-                  textAlign: "center",
-                  fontSize: "40px",
-                  display: "flex",
-                  alignContent: "center",
-                  justifyContent: "center",
-                  marginTop: "100px",
-                }}
-              >
-                Users Not Found.
-              </h1>
-            )}
-          </div>
+            <Box className="col-md-12 ">
+              {users && users.length > 0 ? (
+                  <FetchUser/>
+                ): (
+                  <h1
+                    style={{
+                      textAlign: "center",
+                      fontSize: "40px",
+                      display: "flex",
+                      alignContent: "center",
+                      justifyContent: "center",
+                      marginTop: "100px",
+                    }}
+                  >
+                    Users Not Found.
+                  </h1>
+              )}
+            </Box>
           </Box>
         </Flex>
         <AdminFooter/>

@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { loadUser } from "../redux/actions/user";
 import { Box, Flex, Image, Button, Text, Stack, Link } from '@chakra-ui/react';
 import { FaChevronRight, FaPhoneAlt } from "react-icons/fa";
 import Title from "../components/Title";
@@ -15,16 +14,12 @@ import ContactSec from "../components/ContactSec";
 
 function Home() {
 
-  const dispatch = useDispatch();
-  useEffect(() =>{
-    dispatch(loadUser())
-  },[dispatch])
-
   return (
     <>
       <Header />
+      {/* ======= Hero Section ======= */}
       <Carousels/>
-      {/* about section */}
+      {/* ======= About Section ======= */}
       <Box as="section" id="about" className="about" pt={0} px="7">
         <Title title="About Us" />
         <Flex flexDirection={{ base: 'column', lg: 'row' }} className="container" gap="8" mx="auto" >
@@ -106,53 +101,6 @@ function Home() {
         </div>
       </section>
       {/* ======= Contact Section ======= */}
-      {/* <Box >
-        <Box className="container"  mx="auto"> 
-          <Title title="Contact"/>
-          <FormControl>
-          <Box fontFamily={"font-family: Open Sans"} letterSpacing='.1px' >
-            <Box as="form" action="" method="post" className="php-email-form" mx="auto" width={{base:"xs", md:"md"}} >
-              <Box  mb="2"  >
-                <Flex gap="3" direction={{base: "column", md:"row"}}>
-                  <Box width={{base:"100%", md:"50%"}}>
-                    <FormLabel fontWeight="xl">Name</FormLabel>
-                    <Input type='text' required />
-                  </Box>
-                  <Box width={{base:"100%", md:"50%"}}>
-                  <FormLabel fontWeight="xl">Email</FormLabel>
-                    <Input
-                      type="email"
-                      required
-                    />
-                  </Box>
-                </Flex>
-              </Box>
-              <Box mb="2">
-                <FormLabel fontWeight="xl">Subject</FormLabel>
-                <Input type='text' />
-              </Box>
-              <Box mb="2">
-                <FormLabel fontWeight="xl">Message</FormLabel>
-                <Textarea
-                  name="message"
-                  id="message"
-                  rows={4}
-                  required
-                />
-              </Box>
-               <Box width={"11rem"} mt="2" >
-                <Flex>
-                  <Button type="submit" gap="5" pl="10"  width="full" mt={1} bg={"#00A9DA"} _hover={"#048fb6"} color="white" rounded="sm">
-                    Send Message
-                    <Box bg="#0398c2" color="white" alignSelf="center" p="3" ><FaCheck /></Box>
-                  </Button>
-                </Flex> 
-              </Box>
-            </Box>
-          </Box>
-          </FormControl>
-        </Box>
-      </Box> */}
       <ContactSec/>
       <Footer />
     </>

@@ -20,10 +20,15 @@ import { Toaster} from 'sonner'
 import AuthLayout from "./components/AuthLayout";
 import Pagenotfound from "./pages/Pagenotfound";
 import Approval from "./pages/Approval";
+import { useSelector } from "react-redux";
+import { Box } from "@chakra-ui/react";
+import { Puff } from "react-loader-spinner";
 
 function App() {
 
   const dispatch = useDispatch();
+
+  const { loading } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(loadUser());
@@ -32,76 +37,96 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={
-          <Home />
-        }/>
-        <Route path="/approval" element={
-          <AuthLayout>
-            <Approval />
-          </AuthLayout>
-        }/>
-        <Route path="/login" element={
-          <Login />
-        } />
-        <Route path="/register" element={
-          <Register />
-        } />
-        <Route path="/profile" element={
-        <AuthLayout>
-            <Profile />
-        </AuthLayout>
-        } />
-        <Route path="/updateprofile" element={
-        <AuthLayout>
-            <Updateprofile />
-        </AuthLayout>
-        } />
-        <Route path="/category" element={
-          <Category />
-        } />
-        <Route path="/category/:slug" element={
-          <SelectedCategory />
-        } />
-        <Route path="/about" element={
-          <About />
-        } />
-        {/* isAuthenticate ? <Navigate to="/myprofile" /> : */}
-        <Route path="/forgetPassword" element={
-        <AuthLayout >
-            <ForgetPassword />
-        </AuthLayout>
-        } />
-        <Route path="/resetPassword/:token" element={
-        <AuthLayout >
-            <ResetPassword />
-        </AuthLayout>
-        } />
-        <Route path="/admin/dashboard" element={
-        <AuthLayout userRole ={true}>
-           <Dashboard />
-        </AuthLayout>
-       } />
-        <Route path="*" element={
-          <Pagenotfound />
-        } />
-        <Route path="/getallusers" element={
-        <AuthLayout userRole={true}>
-          <Adminalluser />
-        </AuthLayout>
-        } />
-        <Route path="/getapprovedusers" element={
-        <AuthLayout userRole={true}>
-          <Admingetapproveduser />
-        </AuthLayout>
-        } />
-        <Route path="/chat" element={
-        <AuthLayout>
-          <Chat />
-        </AuthLayout>
-        } />
-      </Routes>
-      <Toaster position="top-center" />
+      {
+        loading ? (  
+          <Box  minH="100vh" width="full" display="flex" alignItems="center" justifyContent="center">
+            <Puff
+              visible={true}
+              height="80"
+              width="80"
+              color="#00A9DA"
+              ariaLabel="puff-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+
+
+            />
+          </Box>  ) : (
+          <>
+             <Routes>
+                <Route path="/" element={
+                  <Home />
+                }/>
+                <Route path="/approval" element={
+                  <AuthLayout>
+                    <Approval />
+                  </AuthLayout>
+                }/>
+                <Route path="/login" element={
+                  <Login />
+                } />
+                <Route path="/register" element={
+                  <Register />
+                } />
+                <Route path="/profile" element={
+                <AuthLayout>
+                    <Profile />
+                </AuthLayout>
+                } />
+                <Route path="/updateprofile" element={
+                <AuthLayout>
+                    <Updateprofile />
+                </AuthLayout>
+                } />
+                <Route path="/category" element={
+                  <Category />
+                } />
+                <Route path="/category/:slug" element={
+                  <SelectedCategory />
+                } />
+                <Route path="/about" element={
+                  <About />
+                } />
+                {/* isAuthenticate ? <Navigate to="/myprofile" /> : */}
+                <Route path="/forgetPassword" element={
+                <AuthLayout >
+                    <ForgetPassword />
+                </AuthLayout>
+                } />
+                <Route path="/resetPassword/:token" element={
+                <AuthLayout >
+                    <ResetPassword />
+                </AuthLayout>
+                } />
+                <Route path="/admin/dashboard" element={
+                <AuthLayout userRole ={true}>
+                   <Dashboard />
+                </AuthLayout>
+               } />
+                <Route path="*" element={
+                  <Pagenotfound />
+                } />
+                <Route path="/getallusers" element={
+                <AuthLayout userRole={true}>
+                  <Adminalluser />
+                </AuthLayout>
+                } />
+                <Route path="/getapprovedusers" element={
+                <AuthLayout userRole={true}>
+                  <Admingetapproveduser />
+                </AuthLayout>
+                } />
+                <Route path="/chat" element={
+                <AuthLayout>
+                  <Chat />
+                </AuthLayout>
+                } />
+              </Routes>
+              <Toaster position="top-center" />
+          </>
+        )
+      }
+     
     </Router>
   );
 }

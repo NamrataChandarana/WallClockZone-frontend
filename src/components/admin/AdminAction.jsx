@@ -39,7 +39,7 @@ const AdminAction = ({id, status}) => {
     <>
         <Flex gap="2" pt="5">
           <Link as={RouterLink} to={'/chat'} >
-            <Button bg="blue.500" size="sm" color="white" _hover={{bg:"blue.600"}} rounded="md" p="4" onClick={() => { accessChat(id)}}>Message</Button>
+            <Button bg="blue.500" size="sm" color="white" _hover={{bg:"blue.600"}} rounded="md" p="5" onClick={() => { accessChat(id)}}>Message</Button>
           </Link>
           <AlertDialogComp label={status ? "Disapprove" : "Approve" } onClickFunc={() => handleApprove()} color="green.500" />
           <AlertDialogComp label="Delete" onClickFunc={() => handleDelete()} color="red.500" />

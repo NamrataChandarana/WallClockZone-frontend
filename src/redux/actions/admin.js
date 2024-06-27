@@ -15,9 +15,9 @@ export const admingetallUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "getalluserFail",
-      payload: error.response.data.message,
+      payload: error?.response?.data?.message,
     });
-    toast.error(error.response.data.message);
+    toast.error(error?.response?.data?.message);
   }
 };
 
@@ -76,13 +76,15 @@ export const updateUserStatus = (id) => async (dispatch) => {
       withCredentials: true,
     });
     
-    dispatch({ type: "updateuserstatusSuccess", payload: data?.message });
-    toast.success(data?.message);
+    dispatch({ type: "updateuserstatusSuccess", payload: data.message });
+    toast.success("Status updated!");
+    admingetallUser();
   } catch (error) {
     dispatch({
       type: "updateuserstatusFail",
       payload: error?.response?.data?.message,
     });
     toast.error(error?.response?.data?.message);
+    return false
   }
 };

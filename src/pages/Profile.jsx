@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { loadUser } from "../redux/actions/user";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Box, Flex, Button, Text } from '@chakra-ui/react';
 import { useNavigate} from "react-router-dom";
@@ -50,10 +49,6 @@ function Profile() {
     }
   }, [user]);
 
-  useEffect(() => {
-    dispatch(loadUser());
-  }, [dispatch]);
-
   const handleUpdateClick = () => {
     navigate('/updateprofile');
   };
@@ -64,22 +59,24 @@ function Profile() {
       <SubHeading title="Wall Clock Zone" subTitle="Profile"/>
       <section className="w-100 pl-5" >
         <Title title="Profile"/>
-        <Box className="col-lg-10 mb-2">
-          <Flex className="row d-flex m-0 p-0">
+        <Box className="col-lg-10 mb-2" fontWeight="xl" fontFamily={"Open Sans"}>
+          <Flex className="row d-flex m-0 p-0" >
             {user?.status === true ? (
-              <Flex className="col-sm-3 justify-content-end">
-                <Text color="gray.600" fontSize="xl"mt="1">Your Business:</Text>
-                <Button colorScheme="green" rounded="sm">Approve</Button>
-              </Flex>
+              <>
+                <Flex className="col-sm-11" gap="2" justifyContent="flex-end">
+                  <Text color="gray.600" fontSize="xl"mt="1">Your Business: </Text>
+                  <Button colorScheme="green" rounded="sm">Approve</Button>
+                </Flex>
+                <Text fontSize="sm" fontWeight="medium" color="gray.600" textAlign="end" pr="28">Your profile is approved, users can  view <br />your business profile and contact you directly.</Text>
+              </>
             ) : (
               <>
                 <Flex className="col-sm-11" gap="2" justifyContent="flex-end" >
-                  <Text color="gray.600" fontSize="xl"mt="1" fontWeight="xl" fontFamily={"Open Sans"}>Your Business:</Text>
+                  <Text color="gray.600" fontSize="xl" mt="1">Your Business: </Text>
                   <Button colorScheme="red" rounded="sm">Disapprove</Button>
                 </Flex>
-                <Text fontSize="sm" fontWeight="medium" color="gray.600" textAlign="end" pr="28">Once your profile is approved, users can  view <br />your business and contact you directly.</Text>
+                <Text fontSize="sm" fontWeight="medium" color="gray.600" textAlign="end" pr="28">Once your profile is approved, users can  view <br />your business profile and contact you directly.</Text>
               </>
-             
             )}
           </Flex>
         </Box>

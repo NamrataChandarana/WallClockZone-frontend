@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Pagenotfound = () => {
   return (
     <Box className="pnf">
-       <Box className="text-3xl m-auto">
+       <Box className="text-4xl m-auto">
               404 <br/>
               Page not found!
         </Box>

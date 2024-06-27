@@ -4,7 +4,7 @@ import {  Link as RouterLink } from "react-router-dom";
 import "./style/style.css";
 import { logout } from "../redux/actions/user";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer, Link } from '@chakra-ui/react';
+import { Box, Button, Flex, Stack, useDisclosure, Text, Spacer, Link, Spinner } from '@chakra-ui/react';
 import { FaAlignJustify } from "react-icons/fa";
 import Avtar from "./Avtar";
 import {
@@ -16,7 +16,7 @@ import {
 import TopHeader from "./TopHeader";
 
 function Header() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const { isAuthenticated, loading, user } = useSelector((state) => state.user);
   const { isOpen, onToggle } = useDisclosure();
   
   const dispatch = useDispatch();
@@ -24,6 +24,13 @@ function Header() {
     dispatch(logout());
   };
  
+  if(loading){
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+        <Spinner size="xl" />
+      </Box>
+    );
+  }
 
   return (
     <>  
@@ -71,7 +78,7 @@ function Header() {
                 <Link as={RouterLink} to={'/admin/dashboard'} style={{textDecoration:"none"}}>
                   <MenuItem>Dashboard</MenuItem>
                 </Link>: null}
-                <Button onClick={logoutHandler} width={"full"} backgroundColor={"white"} _hover={{backgroundColor:"gray.200", color: "#73C5EB"}} >
+                <Button onClick={logoutHandler} width={"full"} backgroundColor={"white"} >
                   <MenuItem  _hover={{backgroundColor:"gray.200"}}>Logout</MenuItem>
                 </Button>
               </MenuList>

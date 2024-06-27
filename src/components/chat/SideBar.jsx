@@ -96,7 +96,7 @@ const SideBar = () => {
                 />
               ))
             )}
-            {loadingChat && <Spinner ml="auto" d="flex" />}
+            {loadingChat && <Spinner ml="auto" d="flex" size="xl" />}
             </DrawerBody>
         </DrawerContent>
       </Drawer>

@@ -45,11 +45,11 @@ export const adminReducer = createReducer(
     },
     updateuserstatusSuccess: (state, action) => {
       state.loading = false;
-      state.message = action.payload;
+      state.approve = action.payload;
     },
     updateuserstatusFail: (state, action) => {
       state.loading = false;
-      state.message = action.payload;
+      state.approve = action.payload;
     },
     clearError: (state) => {
       state.error = null;
