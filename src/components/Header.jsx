@@ -14,10 +14,9 @@ import {
   MenuItem,
 } from '@chakra-ui/react'
 import TopHeader from "./TopHeader";
-import { Puff } from "react-loader-spinner";
 
 function Header() {
-  const { isAuthenticated, loading, user } = useSelector((state) => state.user);
+  const { isAuthenticated,  user } = useSelector((state) => state.user);
   const { isOpen, onToggle } = useDisclosure();
   
   const dispatch = useDispatch();
@@ -25,19 +24,6 @@ function Header() {
     dispatch(logout());
   };
  
-  if(loading){
-    return (
-        <Puff
-          visible={true}
-          height="80"
-          width="80"
-          color="#00A9DA"
-          ariaLabel="puff-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-    );
-  }
 
   return (
     <>  

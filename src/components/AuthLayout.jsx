@@ -7,22 +7,22 @@ import { Box } from "@chakra-ui/react";
 const AuthLayout = ({ userRole= false, children}) => {
    const navigate = useNavigate();
    const [loader, setLoader] = useState(true)
-   const { isAuthenticated, loading, user} = useSelector((state) => state.user);
+   const { isAuthenticated,user} = useSelector((state) => state.user);
    const isAdmin = user?.role;
 
 
    useEffect(()=>{
 
-    if(loading === undefined){
-        return;
-    }
+    // if(loading === undefined){
+    //     return;
+    // }
 
-    if (loading === false) {
+    // if (loading === false) {
         if (!isAuthenticated) {
             navigate("/login");
             return;
         }
-    }
+    // }
 
     if (userRole === true && isAdmin !== "admin" ){
         navigate("/")
