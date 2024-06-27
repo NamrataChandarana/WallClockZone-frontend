@@ -18,9 +18,9 @@ function Home() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useEffect(()=> {
     dispatch(loadUser());
-  }, [dispatch]);
+  },[dispatch])
   
   return (
     <>

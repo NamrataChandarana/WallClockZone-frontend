@@ -27,7 +27,6 @@ function Header() {
  
   if(loading){
     return (
-      <Box  minH="100vh" width="full" display="flex" alignItems="center" justifyContent="center">
         <Puff
           visible={true}
           height="80"
@@ -37,7 +36,6 @@ function Header() {
           wrapperStyle={{}}
           wrapperClass=""
         />
-      </Box> 
     );
   }
 
