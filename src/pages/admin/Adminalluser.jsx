@@ -9,7 +9,6 @@ import AdminHeader from '../../components/admin/AdminHeader'
 import AdminSidebar from "../../components/admin/AdminSidebar";
 import AdminFooter from "../../components/admin/AdminFooter";
 import {Tr, Th, Td,Thead, TableContainer, Table, Tbody} from '@chakra-ui/react';
-import { Skeleton } from "@chakra-ui/react";
 import AdminAction from "../../components/admin/AdminAction";
 
 function Adminalluser() {
@@ -25,7 +24,7 @@ function Adminalluser() {
         <AdminHeader/>
         <Flex gap="5">
           <AdminSidebar/>
-          {
+          {/* {
             loading ?   
             <Box  minH="100vh">
               <Text as="h3" color="gray.600" fontWeight="xs" pt="3">All Users</Text>
@@ -102,7 +101,7 @@ function Adminalluser() {
                 </TableContainer>
             </Box>
            :
-          (
+          ( */}
             <Box minH="100vh">
               <Text as="h3" color="gray.600" fontWeight="xs" pt="3">All Users</Text>
               <Box>
@@ -161,9 +160,8 @@ function Adminalluser() {
                 )}
               </div>
             </Box>
-          )
-          }
-          
+          {/* )
+          } */}
         </Flex>
         <AdminFooter/>
       </>
