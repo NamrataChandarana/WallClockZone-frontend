@@ -45,7 +45,9 @@ export const loadUser = () => async (dispatch) => {
       withCredentials: true,
     });
 
-    if (data.user) {
+    if (!data.success) {
+      dispatch({ type: "loadUserFail", payload: data.message });
+    }else{
       dispatch({ type: "loadUserSuccess", payload: data.user });
     }
 
