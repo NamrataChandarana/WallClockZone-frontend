@@ -42,7 +42,7 @@ function Header() {
           <Text fontSize="xl"  color="black" textAlign={"center"}>Wall Clock <br /> Zone</Text>
         </Link>
         <Flex alignitems="center" gap="1" >
-          <Flex display={{ base: 'none', md: 'flex' }} gap="5" fontSize="lg" fontWeight="sm" rounded="sm"  color="gray.900" mt="5">
+          <Flex display={{ base: 'none', md: 'flex' }} gap="5" fontSize="lg" fontWeight="sm" rounded="sm"  color="gray.900" mt="6">
             <Link as={RouterLink} to={'/'}  _hover={{color:"#00A9DA"}} >Home</Link>
             <Link as={RouterLink} to={'/about'} _hover={{color:"#00A9DA"}}>About</Link>
             <Link as={RouterLink} to={'/category'} _hover={{color:"#00A9DA"}} >Categories</Link>
@@ -81,10 +81,10 @@ function Header() {
             loading ? <SkeletonCircle size='10' mt="2" ml="4"/> : (
             <Flex alignitems="center" gap="2" display={{ base: 'none', md: 'flex' }} width="full" mt="4" ml="1">
               <Link as={RouterLink} to={'/login'} style={{textDecoration:"none"}} >
-                <Text  px='4' rounded="md" py='2'  _hover={{color:"#00A9DA", bg: "gray.100", py:'2'}} color="gray.900" >Signin</Text>
+                <Text  px='4' rounded="md" py='2' fontSize="lg"  _hover={{color:"#00A9DA", bg: "gray.100", py:'2'}} color="gray.900" >Signin</Text>
               </Link>
               <Link as={RouterLink} to={'/register'} style={{textDecoration:"none"}} >
-                <Text px="4" py='2' color="white" rounded="md" bg="#00A9DA" >Register &rarr;</Text>
+                <Text px="4" py='2' color="white" fontSize="lg" rounded="md" bg="#00A9DA" >Register &rarr;</Text>
               </Link>
             </Flex>)
 
