@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
 import {  login } from "../redux/actions/user";
@@ -11,6 +11,7 @@ import Title from "./Title";
 import SubHeading from "./SubHeading";
 import Header from "./Header";
 import Footer from "./Footer";
+import { loadUser } from "../redux/actions/user";
 
 // import toast from "react-hot-toast";
 

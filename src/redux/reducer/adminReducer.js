@@ -30,25 +30,25 @@ export const adminReducer = createReducer(
       state.error = action.payload;
     },
     deleteuserRequest: (state) => {
-      state.loading = true;
+      state.delloading = true;
     },
     deleteuserSuccess: (state, action) => {
-      state.loading = false;
+      state.delloading = false;
       state.message = action.payload;
     },
     deleteuserFail: (state, action) => {
-      state.loading = false;
+      state.delloading = false;
       state.message = action.payload;
     },
     updateuserstatusRequest: (state) => {
-      state.loading = true;
+      state.approveloading = true;
     },
     updateuserstatusSuccess: (state, action) => {
-      state.loading = false;
+      state.approveloading = false;
       state.approve = action.payload;
     },
     updateuserstatusFail: (state, action) => {
-      state.loading = false;
+      state.approveloading = false;
       state.approve = action.payload;
     },
     clearError: (state) => {

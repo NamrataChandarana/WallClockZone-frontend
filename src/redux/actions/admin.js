@@ -12,6 +12,7 @@ export const admingetallUser = () => async (dispatch) => {
       withCredentials: true,
     });
     dispatch({ type: "getalluserSuccess", payload: data.users });
+    return data.users
   } catch (error) {
     dispatch({
       type: "getalluserFail",
@@ -32,6 +33,7 @@ export const admingetapprovedUser = () => async (dispatch) => {
       withCredentials: true,
     });
     dispatch({ type: "getapproveuserSuccess", payload: data.user });
+    return data.user;
   } catch (error) {
     dispatch({
       type: "getapproveuserFail",
@@ -53,7 +55,7 @@ export const deleteUser = (id) => async (dispatch) => {
     });
     dispatch({ type: "deleteuserSuccess", payload: data.message });
     toast.success("User Deleted sucessfully!");
-    admingetallUser();
+    return data.message
   } catch (error) {
     dispatch({
       type: "deleteuserFail",
@@ -78,7 +80,8 @@ export const updateUserStatus = (id) => async (dispatch) => {
     
     dispatch({ type: "updateuserstatusSuccess", payload: data.message });
     toast.success("Status updated!");
-    admingetallUser();
+    // admingetallUser();
+    return data.message
   } catch (error) {
     dispatch({
       type: "updateuserstatusFail",

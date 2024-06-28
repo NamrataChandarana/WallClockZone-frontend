@@ -7,17 +7,43 @@ import { accessChatUser } from '../../redux/actions/chat'
 import {toast} from 'sonner'
 import { Link as RouterLink } from 'react-router-dom'
 
-const AdminAction = ({id, status}) => {
+const AdminAction = ({id, status, setApprove}) => {
 
   const dispatch = useDispatch();
 
 
   function handleDelete(){
+
     dispatch(deleteUser(id))
+    .then(() => {
+      // Update local state (setApproval) after successful deletion
+      setApprove(prevApprove =>
+        prevApprove.filter(user => user._id !== id)
+      );
+    })
+    .catch(error => {
+      console.error(`Error deleting user ${id}:`, error);
+      // Handle error if needed
+    });
+    
   }
 
   function handleApprove(){
-    dispatch(updateUserStatus(id))
+    async function statusUpdate(){
+      const res = await dispatch(updateUserStatus(id))
+      if (res === `User ${id} Disapprove!`) {
+        // Update the local status in UI
+        setApprove(prevApprove =>
+          prevApprove.map(user =>  user._id === id ? { ...user, status: false } : user)
+        );
+      } else {
+        // Update the local status in UI
+        setApprove(prevApprove =>
+          prevApprove.map(user => user._id === id ? { ...user, status: true } : user )
+        );
+      }
+    }
+    statusUpdate()
   }
 
   function accessChat(id){

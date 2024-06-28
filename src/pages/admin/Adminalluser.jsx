@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { admingetallUser } from "../../redux/actions/admin";
 import { useEffect } from "react";
@@ -10,22 +10,32 @@ import AdminSidebar from "../../components/admin/AdminSidebar";
 import AdminFooter from "../../components/admin/AdminFooter";
 import {Tr, Th, Td,Thead, TableContainer, Table, Tbody} from '@chakra-ui/react';
 import AdminAction from "../../components/admin/AdminAction";
+import { Skeleton } from "@chakra-ui/react";
 
 function Adminalluser() {
   const dispatch = useDispatch();
-  const { approve, users, message, loading } = useSelector((state) => state.admin);
+  const { users} = useSelector((state) => state.admin);
+  const [approve, setApprove] =useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    dispatch(admingetallUser());
-  }, [message, approve, dispatch]);
+    async function allUser(){
+      setLoading(true)
+      const res = await dispatch(admingetallUser());
+      setApprove(res);
+      setLoading(false)
+    } 
+    allUser()  
+  }, [dispatch]);
 
   return (
       <>
         <AdminHeader/>
         <Flex gap="5">
           <AdminSidebar/>
-          {/* {
-            loading ?   
+          {
+            loading ?
+           
             <Box  minH="100vh">
               <Text as="h3" color="gray.600" fontWeight="xs" pt="3">All Users</Text>
               <Box>
@@ -101,7 +111,7 @@ function Adminalluser() {
                 </TableContainer>
             </Box>
            :
-          ( */}
+          (
             <Box minH="100vh">
               <Text as="h3" color="gray.600" fontWeight="xs" pt="3">All Users</Text>
               <Box>
@@ -110,7 +120,7 @@ function Adminalluser() {
                 </Box>
               </Box>
               <div>
-                {users && users.length > 0 ? (
+                {approve && approve.length > 0 ? (
                   <Box>
                     <TableContainer boxSize={{base:"3xs", md:"lg", xl:"auto" }}>
                       <Table variant='simple'>
@@ -126,7 +136,7 @@ function Adminalluser() {
                         </Thead>
                         <Tbody>
                           {
-                            users.map((user)=>(
+                            approve.map((user)=>(
                               <Tr>
                                 <Td>{user.firstname + " " + user.lastname}</Td>
                                 <Td>{user.companyname}</Td>
@@ -136,7 +146,7 @@ function Adminalluser() {
                                    <Text py="2" px="2" color="white" textAlign="center" bg="green.500" rounded="full" cursor="pointer" fontSize="sm">Approved</Text>:
                                    <Text py="2" px="2" color="white" bg="red.500" cursor="pointer" rounded="full"  fontSize="sm">Not Approved</Text> }
                                 </Td>
-                                <AdminAction id={user._id} status={user.status}/>
+                                <AdminAction id={user._id} status={user.status} setApprove={setApprove}/>
                               </Tr>
                             ))
                           }
@@ -160,8 +170,8 @@ function Adminalluser() {
                 )}
               </div>
             </Box>
-          {/* )
-          } */}
+          )
+          } 
         </Flex>
         <AdminFooter/>
       </>

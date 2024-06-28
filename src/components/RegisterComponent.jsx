@@ -1,6 +1,6 @@
-import React, { useState} from "react";
+import React, { useState,useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { registeration } from "../redux/actions/user";
+import {loadUser, registeration } from "../redux/actions/user";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import {toast} from 'sonner'
@@ -67,7 +67,8 @@ function RegisterComponent() {
       )
     );
 
-    if(res && res.message){
+    dispatch(loadUser())
+    if(res && res.message && res.message !== null){
       toast(res.message);
     }
     if(res){
