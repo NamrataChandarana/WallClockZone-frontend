@@ -43,7 +43,7 @@ function Adminalluser() {
                   <Text color="white" fontSize="lg" py="2" px="5">User List</Text>
                 </Box>
               </Box>
-               <TableContainer boxSize={{base:"3xs", md:"lg", xl:"auto" }}>
+               <TableContainer width={{base:"xs", md:"lg", xl:"auto" }} overflow={scroll}>
                   <Table variant='simple'>
                     <Thead>
                       <Tr>
