@@ -50,7 +50,7 @@ function Updateprofile() {
     }
   }, [user]);
 
-  const submitHandler = (e) => {
+   const submitHandler = async(e) => {
     // if (!inputs.firstname || !inputs.lastname || !inputs.email || !inputs.password || !inputs.username || !inputs.companyname || !inputs.phoneNo || !inputs.category || !inputs.city || !inputs.state || !inputs.address) {
     //   toast.error("Please fill all the required fields", { position: "top-center", className: "max-w-fit" });
     //   return;
@@ -65,7 +65,7 @@ function Updateprofile() {
       return;
     }
     e.preventDefault();
-    const res = dispatch(
+    const res = await dispatch(
       updateprofile(
         inputs.firstname,
         inputs.lastname,
