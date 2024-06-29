@@ -10,10 +10,10 @@ import { useEffect } from 'react';
 import './style.css'
 import io from 'socket.io-client'
 import ScrollableChat from './ScrollableChat';
-import animationData from "../../animation/typing.json";
+// import animationData from "../../animation/typing.json";
 import { Text } from '@chakra-ui/layout';
 import {toast} from 'sonner'
-import ChatLoading from './ChatLoading';
+// import ChatLoading from './ChatLoading';
 
 const ENDPOINT = "https://wallclockzone.onrender.com";
 var socket, selectedChatCompare;
@@ -30,19 +30,19 @@ const SingleChat = ({notification, setNotification}) => {
     const [isTyping, setIsTyping] = useState(false);
     const msgData = useSelector((state)=> state?.chat?.sendMsg);
     const [messages, setMessages] = useState([]);
-    const [msgLoading, setMsgLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     
-    const defaultOptions = {
-      loop: true,
-      autoplay: true,
-      animationData: animationData,
-      rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice",
-      },
-    };
+    // const defaultOptions = {
+    //   loop: true,
+    //   autoplay: true,
+    //   animationData: animationData,
+    //   rendererSettings: {
+    //     preserveAspectRatio: "xMidYMid slice",
+    //   },
+    // };
     
     useEffect(()=>{
-      setMessages("")
+      setMessages(" ")
       socket = io("https://wallclockzone.onrender.com");
       socket.emit("setup",user);
       socket.on("connected", () => setSocketConnected(true))
@@ -56,16 +56,17 @@ const SingleChat = ({notification, setNotification}) => {
 
     //fetchmsg
     const fetchMsg = async(chatId) =>{
+
       if(!seletedChat) return;
       const msg = await dispatch(fetchMsgUser(chatId));
       setMessages(msg);
+      setLoading(false)
     }
     
     useEffect(()=>{
-      setMessages("")
+      setLoading(true)
       fetchMsg(seletedChat?._id);
       selectedChatCompare = seletedChat;
-      setMsgLoading(false);
     },[seletedChat])
 
     //send msg
@@ -192,7 +193,7 @@ const SingleChat = ({notification, setNotification}) => {
              borderRadius="lg"
              overflowY="hidden"
              >
-                {/* {loadingChats ? (
+                {loading ? (
                     <Spinner
                     display="flex"
                       size="xl"
@@ -201,28 +202,22 @@ const SingleChat = ({notification, setNotification}) => {
                       alignSelf="center"
                       margin="auto"
                     />
-                    ) : ( */}
+                    ) : (
                       <div className="messages">
-                    {
-                      msgLoading ? 
-                        <Spinner/>
-                        :<ScrollableChat messages={messages} />
-                        
-                    }
-                        
-                    {/* message */}
-                    {/* {isTyping ?
-                        <span>
-                          <Lottie 
-                            options={defaultOptions}
-                            height={50}
-                            width={50}
-                            style={{ marginBottom: 0, marginLeft: 0 }}
-                          />
-                        </span>
-                        : <>no</>} */}
-                      </div>
-                {/* )} */}
+                        <ScrollableChat messages={messages} />
+                        {/* message */}
+                        {/* {isTyping ?
+                            <span>
+                              <Lottie 
+                                options={defaultOptions}
+                                height={50}
+                                width={50}
+                                style={{ marginBottom: 0, marginLeft: 0 }}
+                              />
+                            </span>
+                            : <>no</>} */}
+                        </div>
+                )} 
             </Box>         
             <FormControl
               // onKeyDown={sendMessage}
