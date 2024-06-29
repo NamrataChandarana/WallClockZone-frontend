@@ -80,7 +80,6 @@ function Updateprofile() {
         inputs.website
       )
     );
-    dispatch(loadUser());
     if(res) navigate('/profile')
   };
 
