@@ -6,9 +6,9 @@ import Profile from "./pages/Profile";
 import Category from "./pages/Category";
 import Updateprofile from "./pages/Updateprofile";
 import About from "./pages/About";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { loadUser } from "./redux/actions/user";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Dashboard from "./pages/admin/Dashboard";
 import Adminalluser from "./pages/admin/Adminalluser";
 import Admingetapproveduser from "./pages/admin/Admingetapproveduser";
@@ -24,10 +24,11 @@ import Approval from "./pages/Approval";
 function App() {
 
   const dispatch = useDispatch();
+  const adminAction = useSelector((state)=> state.admin)
 
   useEffect(() => {
     dispatch(loadUser());
-  }, [dispatch]);
+  }, [dispatch, adminAction]);
   
 
   return (
