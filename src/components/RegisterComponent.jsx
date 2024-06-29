@@ -68,7 +68,7 @@ function RegisterComponent() {
     );
 
     dispatch(loadUser())
-    if(res && res.message && res.message !== null){
+    if(res && res.message && res.success === true){
       toast(res.message);
     }
     if(res){

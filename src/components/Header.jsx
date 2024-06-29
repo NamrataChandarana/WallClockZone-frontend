@@ -106,7 +106,7 @@ function Header() {
                 (
                   <Stack spacing="2">
                 <Button
-                  as={Link}
+                  as={RouterLink}
                   variant="outline"
                   px="4"
                   py="2"
@@ -121,7 +121,7 @@ function Header() {
                   Sign In
                 </Button>
                 <Button
-                  as={Link}
+                  as={RouterLink}
                   to="/register"
                   variant="outline"
                   px="4"
