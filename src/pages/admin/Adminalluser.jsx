@@ -31,19 +31,19 @@ function Adminalluser() {
   return (
       <>
         <AdminHeader/>
-        <Flex gap="5">
+        <Flex gap="5" >
           <AdminSidebar/>
           {
             loading ?
            
-            <Box  minH="100vh">
+            <Box   >
               <Text as="h3" color="gray.600" fontWeight="xs" pt="3">All Users</Text>
               <Box>
                 <Box bg="#00A9DA" h="10" mt="10">
                   <Text color="white" fontSize="lg" py="2" px="5">User List</Text>
                 </Box>
               </Box>
-               <TableContainer width={{base:"xs", md:"lg", xl:"auto" }} overflow={scroll}>
+               <TableContainer width={{base:"xs", md:"lg", xl:"auto" }} as={Table} >
                   <Table variant='simple'>
                     <Thead>
                       <Tr>
@@ -112,17 +112,17 @@ function Adminalluser() {
             </Box>
            :
           (
-            <Box minH="100vh">
+            <Box minH="100vh" >
               <Text as="h3" color="gray.600" fontWeight="xs" pt="3">All Users</Text>
               <Box>
-                <Box bg="#00A9DA" h="10" mt="10">
-                  <Text color="white" fontSize="lg" py="2" px="5">User List</Text>
+              <Box bg="#00A9DA" h="10" mt="10" >
+                  <Text color="white" fontSize="lg" py="2" px="5" >User List</Text>
                 </Box>
               </Box>
               <div>
                 {approve && approve.length > 0 ? (
-                  <Box>
-                    <TableContainer boxSize={{base:"3xs", md:"lg", xl:"auto" }}>
+                  <Box >
+                    <TableContainer boxSize={{base:"250px", sm:"sm", md: "2xl", lg:"3xl", xl:"6xl" }} overflow="auto" overflowY="auto">
                       <Table variant='simple'>
                         <Thead>
                           <Tr>
@@ -134,7 +134,7 @@ function Adminalluser() {
                             <Th>Action</Th>
                           </Tr>
                         </Thead>
-                        <Tbody>
+                        <Tbody mb="5">
                           {
                             approve.map((user)=>(
                               <Tr>

@@ -13,7 +13,7 @@ function AdminSidebar() {
     }
   ]
   return (
-    <Box  width={{base:"45px", md:"240px"}} bg="#272626"  >
+    <Box  width={{base:"37px", lg:"240px"}} bg="#272626"  >
         {menuList.map((item) => (
           <NavLink to={item.path} activeStyle={{bg:"#00A9DA", color:"white"}}>
             <Flex color="white" gap="2" py="2" px="3" _hover={{color: "#00A9DA"}}>
