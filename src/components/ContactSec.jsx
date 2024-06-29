@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useRef }  from 'react';
 import { useForm, ValidationError } from '@formspree/react';
 import { Box, Button, FormControl, FormLabel, Input, Textarea, Text, Flex } from '@chakra-ui/react';
 import Title from './Title';
@@ -6,12 +6,20 @@ import { FaCheck } from 'react-icons/fa';
 
 function ContactForm() {
   const [state, handleSubmit] = useForm(process.env.REACT_APP_EDITOR_API_KEY);
+  const formRef = useRef()
 
+  if(formRef.current){
+    if (state.succeeded) {
+        formRef.current.elements.email.value=""
+        formRef.current.elements.name.value=""
+        formRef.current.elements.message.value = ""
+    }
+  }
 
   return (
     <Box maxW="xl" mx="auto" mb="16">
         <Title title="Contact Us" />
-      <form onSubmit={handleSubmit} className="flex flex-col">
+      <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col">
         <Flex spacing={8} mb={8} gap="5">
           <FormControl id="name">
             <FormLabel>Name</FormLabel>
