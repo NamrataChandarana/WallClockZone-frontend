@@ -42,6 +42,7 @@ const SingleChat = ({notification, setNotification}) => {
     };
     
     useEffect(()=>{
+      setMessages("")
       socket = io("https://wallclockzone.onrender.com");
       socket.emit("setup",user);
       socket.on("connected", () => setSocketConnected(true))
@@ -61,6 +62,7 @@ const SingleChat = ({notification, setNotification}) => {
     }
     
     useEffect(()=>{
+      setMessages("")
       fetchMsg(seletedChat?._id);
       selectedChatCompare = seletedChat;
       setMsgLoading(false);
@@ -130,7 +132,7 @@ const SingleChat = ({notification, setNotification}) => {
           }
         }
       }else{
-            setMessages([...messages, newMessageRecieved])
+        setMessages([...messages, newMessageRecieved])
         }
       })
     })
