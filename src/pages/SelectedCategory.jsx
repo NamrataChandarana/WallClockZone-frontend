@@ -70,7 +70,7 @@ function SelectedCategory() {
             <Box className="col-md-12" >
               {users?.length > 0 ? (
                 users.map((user) => (
-                  <Box w="full" bg="white" rounded="md" shadow="md" _dark={{ bg: "gray.800" }} mb={10} key={user._id}>
+                  <Box w="full" bg="white" rounded="md" shadow="md" _dark={{ bg: "gray.800" }} mb={10} key={user._id} mx="6">
                     <Flex justify="between" align="center" px={6} >
                       <VStack align="start" >
                         <Heading size="xl" fontWeight="sm" lineHeight="tight" color="gray.800" > 

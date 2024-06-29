@@ -122,7 +122,7 @@ function Adminalluser() {
               <div>
                 {approve && approve.length > 0 ? (
                   <Box >
-                    <TableContainer boxSize={{base:"250px", sm:"sm", md: "2xl", lg:"3xl", xl:"6xl" }} overflow="auto" overflowY="auto">
+                    <TableContainer width={{base:"250px", sm:"sm", md: "2xl", lg:"3xl", xl:"6xl" }} overflow="auto" overflowY="auto">
                       <Table variant='simple'>
                         <Thead>
                           <Tr>
