@@ -24,11 +24,11 @@ import Approval from "./pages/Approval";
 function App() {
 
   const dispatch = useDispatch();
-  const adminAction = useSelector((state)=> state.admin)
+
 
   useEffect(() => {
     dispatch(loadUser());
-  }, [dispatch, adminAction]);
+  }, [dispatch]);
   
 
   return (
