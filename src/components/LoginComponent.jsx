@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom";
 import {  login } from "../redux/actions/user";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {toast} from 'sonner'
 import { Box, Button, FormControl, FormLabel, Input, Text} from "@chakra-ui/react";
 import Title from "./Title";
@@ -12,6 +11,7 @@ import SubHeading from "./SubHeading";
 import Header from "./Header";
 import Footer from "./Footer";
 import { loadUser } from "../redux/actions/user";
+import FormErrorHandler from "./FormErrorHandler";
 
 // import toast from "react-hot-toast";
 
@@ -20,13 +20,40 @@ function LoginComponent() {
   const [password, setPassword] = useState("");
   const { isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const [errors, setErrors] = useState();
+
+
+    const validateField = (errors) => {
+      const updatedErrors = { ...errors };
+      if (email) updatedErrors.email = ""; 
+      if (password) updatedErrors.password = ""; 
+      setErrors(updatedErrors);
+    };
+  
+    useEffect(()=>{
+      validateField()
+    },[email, password])
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if(email === "" || password === "") {
-      toast.error("Please fill all the inputs")
+
+    if (!email || !password) {
+      const errorMsgs = {
+        email: email?.length >= 2  ? "" : "Enter a valid email address",
+        password: password?.length >= 2 ? "" : "Enter password"
+      }
+      setErrors(errorMsgs)
       return;
     }
+
+    if(email && !/\S+@\S+\.\S+/.test(email)){
+      const errorMsgs = {
+        email: "Enter valid email"
+      }
+      setErrors(errorMsgs);
+      return
+    }
+    
     dispatch(login(email, password));
   };
 
@@ -50,7 +77,9 @@ function LoginComponent() {
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
+            
           </FormControl>
+          <FormErrorHandler errors={errors?.email} />
           <FormControl>
             <FormLabel htmlFor="password">Password</FormLabel>
             <Input
@@ -60,6 +89,7 @@ function LoginComponent() {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
             />
+            <FormErrorHandler errors={errors?.password} />
           </FormControl>
           <Button
             type="submit"

@@ -10,7 +10,6 @@ const AuthLayout = ({ userRole= false, children}) => {
    const { isAuthenticated,user} = useSelector((state) => state.user);
    const isAdmin = user?.role;
 
-
    useEffect(()=>{
 
     // if(loading === undefined){

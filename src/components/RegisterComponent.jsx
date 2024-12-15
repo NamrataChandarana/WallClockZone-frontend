@@ -33,22 +33,68 @@ function RegisterComponent() {
   const { isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
+  const validateField = (inputs) => {
+    const updatedErrors = { ...errors };
+    if (inputs.firstname ) updatedErrors.firstname = ""; 
+    if (inputs.lastname) updatedErrors.lastname = ""; 
+    if (inputs.email) updatedErrors.email = "";
+    if (inputs.password) updatedErrors.password = ""; 
+    if (inputs.username) updatedErrors.username = "";
+    if (inputs.phoneNo) updatedErrors.phoneNo = "" ; 
+    if (inputs.companyname) updatedErrors.companyname = ""; 
+    if (inputs.category) updatedErrors.category = "";
+    if (inputs.city) updatedErrors.city = ""; 
+    if (inputs.state) updatedErrors.state = ""; 
+    if (inputs.address) updatedErrors.address = ""; 
+    if (inputs.name) updatedErrors.name = "";
+
+    setErrors(updatedErrors);
+  };
+
+  useEffect(()=>{
+    validateField(inputs)
+  },[inputs])
+
+
   const submitHandler = async(e) => {
     e.preventDefault();
 
     if (!inputs.firstname || !inputs.lastname || !inputs.email || !inputs.password || !inputs.username || !inputs.companyname || !inputs.phoneNo || !inputs.category || !inputs.city || !inputs.state || !inputs.address) {
-      toast.error("Please fill all the required fields", { position: "top-center", className: "max-w-fit" });
+      const errorMsgs = {
+        firstname: inputs.firstname?.length >= 2 ? "" : "Enter at least 2 characters" ,
+        lastname: inputs.lastname?.length >= 2 ? "" : "Enter at least 2 characters",
+        email: inputs.email?.length >= 2 ? "" : "Enter a valid email address",
+        password: inputs.password?.length >= 2 ? "" : "Enter password",
+        username: inputs.username?.length >= 2 ? "" : "Enter at least 2 characters",
+        companyname: inputs.companyname?.length >= 2 ? "" : "Enter at least 2 characters",
+        phoneNo: inputs.companyname?.length >= 2 ? "" :"Enter a valid phone number",
+        category: inputs.category ? "" : "Select category",
+        city: inputs.city?.length >= 2 ? "" :"Enter your city",
+        state:inputs.state?.length >= 2 ? "" : "Enter your state",
+        address: inputs.address?.length >= 2 ? "" : "Enter your address",
+        name: inputs.name?.length >= 2 ? "" : "Enter your bussiness name",
+      }
+      console.log(errorMsgs)
+      setErrors(errorMsgs)
       return;
     }
+
     if (!/\S+@\S+\.\S+/.test(inputs.email)) {
-      toast.error("Please enter a valid email address", { position: "top-center", className: "max-w-fit" });
+      setErrors("Please enter a valid email address");
       return;
     }
     const phoneNoRegex = /^\d{10}$/;
     if (!phoneNoRegex.test(inputs.phoneNo)) {
-      toast.error("Please enter a valid phone number (10 digits)", { position: "top-center", className: "max-w-fit" });
+      setErrors("Please enter a valid phone number (10 digits)");
       return;
     }
+    
+    // if () {
+    //   setErrors({email: "Please enter a valid email address"});
+    //   return;
+    // }
+    
+   
 
     const res = await dispatch(
       registeration(
@@ -72,6 +118,7 @@ function RegisterComponent() {
       toast(res.message);
     }
     if(res){
+      console.log(res)
       setErrors(res);
     } 
   };

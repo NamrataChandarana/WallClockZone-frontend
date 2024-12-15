@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Grid } from '@chakra-ui/react';
 import FormHeading from './FormHeading';
 import FormInput from './FormInput'
 
 const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
+
 
   return (
     <>
@@ -29,7 +30,7 @@ const Form = ({inputs, setInputs,errors, readonly, isRegistration}) => {
                 value={inputs.companyname} 
                 onChange={(e) => setInputs({...inputs, companyname:e.target.value})} 
                 readOnly={readonly}
-                errors={errors.state}
+                errors={errors.name}
               />
               <FormInput 
                 label="Business Type" 
