@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import ContactSec from "../components/ContactSec";
 import { useEffect } from "react";
 import { loadUser } from "../redux/actions/user";
+import Herosection from "../components/Herosection";
 
 function Home() {
 
@@ -26,7 +27,7 @@ function Home() {
       <>
         <Header />
         {/* ======= Hero Section ======= */}
-        <Carousels/>
+        <Herosection/>
         {/* ======= About Section ======= */}
         <Box as="section" id="about" className="about" pt={0} px="7">
           <Title title="About Us" />
