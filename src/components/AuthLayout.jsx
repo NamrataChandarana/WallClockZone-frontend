@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux"
-import { Puff} from 'react-loader-spinner'
-import { Box } from "@chakra-ui/react";
+import Loader from "./Loader";
 
 const AuthLayout = ({ userRole= false, children}) => {
    const navigate = useNavigate();
@@ -31,19 +30,7 @@ const AuthLayout = ({ userRole= false, children}) => {
    },[navigate, isAuthenticated, isAdmin, userRole]) 
 
     return loader ?  
-    <Box  minH="100vh" width="full" display="flex" alignItems="center" justifyContent="center">
-        <Puff
-          visible={true}
-          height="80"
-          width="80"
-          color="#00A9DA"
-          ariaLabel="puff-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-          
-          
-        />
-    </Box> 
+    <Loader/>
     
     : <>{children}</>
 }

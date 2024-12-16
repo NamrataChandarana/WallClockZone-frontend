@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 const TopHeader = () => {
   const [index, setIndex] = useState(0);
   const names = [
-    'Manufacturer Details', 'Wholeshaler Details', 'Raw-material-Dealer Details', 'Designer Details', 'Transpoter Details'
+    'Manufacturer Details', 'Wholeshaler Details', 'Raw-material-Dealer', 'Designer Details', 'Transpoter Details'
   ];  
 
   useEffect(() => {

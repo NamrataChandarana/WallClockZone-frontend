@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Box, Container, Heading, Text, Stack } from "@chakra-ui/react";
-import {Search, ShoppingBag} from "lucide-react";
+import {MoveRight} from "lucide-react";
 import { Link } from 'react-router-dom';
 
 const Herosection = () => {
@@ -48,7 +48,7 @@ const Herosection = () => {
                   mb={8}
                   lineHeight="relaxed"
                 >
-                  Connect with manufacturers, discover unique designs, and grow your business in the world of timekeeping
+                  Join the largest marketplace for wall clock manufacturers, wholesalers, and suppliers.
                 </Text>
     
                 <Stack
@@ -62,23 +62,30 @@ const Herosection = () => {
                     fontSize="lg"
                     bgColor={"#18181B"}
                     color={"white"}
-                    rightIcon={<Search className="ml-2 h-5 w-5" />}
+                    rightIcon={<MoveRight className="ml-1 h-5 w-5" />}
                     width={{ base: 'full', sm: 'auto' }}
                     className='py-3 px-4 bg-darkbg'
+                    _hover ={{ bgColor: "bg-darkbg"}}
                   >
-                    Find Clocks
+                    <Link to="/register" className='text-white'>
+                      Register Now
+                    </Link>
+                    
                   </Button>
                   <Button
                     size="md"
                     fontSize="lg"
-                    bg="white"
-                    color="blue.700"
-                    _hover={{ bg: 'blue.50' }}
-                    rightIcon={<ShoppingBag className="ml-2 h-4 w-5" />}
+                    bg="none"
+                    border="1px solid white"
+                    color="white"
+                    _hover={{ bg: 'white' }}
+                    // rightIcon={<ShoppingBag className="ml-2 h-4 w-5" />}
                     width={{ base: 'full', sm: 'auto' }}
-                     className='py-3 px-4 bg-darkbg'
+                     className='py-3 px-4 bg-darkbg hover:text-darkbg'
                   >
-                    Sell Clocks
+                    <Link to="/about" className='hover:text-darkbg'>
+                      Learn More
+                    </Link>
                   </Button>
                 </Stack>
               </Box>

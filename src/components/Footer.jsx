@@ -43,8 +43,8 @@ function Footer() {
                     <Tooltip label='Github' hasArrow arrowSize={15} placement='top' bg="#00A9DA" py="1.5" px="4" mb="2"> 
                     <IconButton
                       as={RouterLink}
-                      to="#"
-                      aria-label="Facebook"
+                      to="https://github.com/NamrataChandarana"
+                      aria-label="Github"
                       icon={<FaGithubSquare />}
                       variant="ghost"
                       size="lg"
@@ -59,7 +59,7 @@ function Footer() {
                     <Tooltip label='Twitter' hasArrow arrowSize={15} placement='top' bg="#00A9DA" py="1.5" px="4" mb="2"> 
                     <IconButton
                       as={RouterLink}
-                      to="#"
+                      to="https://x.com/Namrata20_"
                       aria-label="Twitter"
                       icon={<FaTwitter />}
                       variant="ghost"
@@ -75,8 +75,8 @@ function Footer() {
                     <Tooltip label='LinkedIn' hasArrow arrowSize={15} placement='top' bg="#00A9DA" py="1.5" px="4" mb="2"> 
                     <IconButton
                       as={RouterLink}
-                      to="#"
-                      aria-label="Instagram"
+                      to="https://www.linkedin.com/in/namratachandarana/"
+                      aria-label="LinkedIn"
                       icon={<FaLinkedinIn />}
                       variant="ghost"
                       size="lg"
