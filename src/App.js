@@ -6,9 +6,9 @@ import Profile from "./pages/Profile";
 import Category from "./pages/Category";
 import Updateprofile from "./pages/Updateprofile";
 import About from "./pages/About";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { loadUser } from "./redux/actions/user";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Dashboard from "./pages/admin/Dashboard";
 import Adminalluser from "./pages/admin/Adminalluser";
 import Admingetapproveduser from "./pages/admin/Admingetapproveduser";
@@ -21,6 +21,8 @@ import AuthLayout from "./components/AuthLayout";
 import Pagenotfound from "./pages/Pagenotfound";
 import Approval from "./pages/Approval";
 import './App.css';
+import ProfileUpdate from "./components/nonRegisterUser/ProfileUpdate";
+import UserProfilecomponent from "./components/nonRegisterUser/UserProfilecomponent";
 
 function App() {
 
@@ -49,14 +51,29 @@ function App() {
         <Route path="/register" element={
           <Register />
         } />
-        <Route path="/profile" element={
+        {/* For Register user */}
+        <Route path="/register/profile" element={
         <AuthLayout>
             <Profile />
         </AuthLayout>
         } />
+        {/* For non Register user */}
+        <Route path="/profile" element={
+        <AuthLayout>
+            <UserProfilecomponent />
+        </AuthLayout>
+        } />
+
+        {/* For Register user */}
         <Route path="/updateprofile" element={
         <AuthLayout>
             <Updateprofile />
+        </AuthLayout>
+        } />
+        {/* For NonRegister user */}
+        <Route path="/editprofile" element={
+        <AuthLayout>
+            <ProfileUpdate />
         </AuthLayout>
         } />
         <Route path="/category" element={

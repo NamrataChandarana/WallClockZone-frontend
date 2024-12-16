@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom";
 import {  login } from "../redux/actions/user";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {toast} from 'sonner'
 import { Box, Button, FormControl, FormLabel, Input, Text} from "@chakra-ui/react";
 import Title from "./Title";
 import SubHeading from "./SubHeading";
@@ -94,11 +93,11 @@ function LoginComponent() {
           <Button
             type="submit"
             w="100%"
-            bg="#0092bb"
+            bg="#18181B"
             color="white"
             py={2.5}
             my={5}
-            _hover={{ bg: "#0392b9" }}
+            _hover={{ bg: "#18181B" }}
             // mx="5%"
             onClick={submitHandler}
           >

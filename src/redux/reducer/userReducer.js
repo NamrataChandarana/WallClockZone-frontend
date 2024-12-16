@@ -66,6 +66,16 @@ export const userReducer = createReducer(
       state.loading = false;
     },
 
+    UserProfileUpdateRequest:(state) => {
+      state.loading = true;
+    },
+    UserProfileUpdateSuccess: (state) => {
+      state.loading = false;
+    },
+    UserProfileUpdateFail: (state) => {
+      state.loading = false;
+    },
+
     forgetPasswordRequest: (state) => {
       state.loading = true;
     },

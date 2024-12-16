@@ -108,8 +108,8 @@ export const registeration =
     }
   };
 
-export const updateprofile =
-  (
+//Register user
+export const updateprofile =(
     firstname,
     lastname,
     companyname,
@@ -153,6 +153,40 @@ export const updateprofile =
       return true
     } catch (error) {
       dispatch({ type: "updateprofileFail", payload: error });
+      toast.error(error.response.data.message);
+      return false
+    }
+  };
+
+//Non Register user
+  export const UserProfileUpdate =(
+    name,
+    email,
+    password
+  ) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: "UserProfileUpdateRequest" });
+
+      const { data } = await axios.put(
+        `${server}/users/me/edit`,
+        {
+          name,
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      dispatch({ type: "UserProfileUpdateSuccess", payload: data.message });
+      toast.success("update successfully");
+      return true
+    } catch (error) {
+      dispatch({ type: "UserProfileUpdateFail", payload: error });
       toast.error(error.response.data.message);
       return false
     }

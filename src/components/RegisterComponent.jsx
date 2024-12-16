@@ -133,9 +133,9 @@ function RegisterComponent() {
       <Form inputs={inputs} setInputs={setInputs} errors={errors} readonly="" isRegistration="true"/>
       <Box width={"9rem"} mx={{xl: "290px",  base: "5" }} mb="10">
         <Flex>
-          <Button type="submit" gap="5" pl="10"  width="full" mt={1} bg={"#00A9DA"} _hover={"#048fb6"} color="white" rounded="sm" onClick={submitHandler}>
+          <Button type="submit" gap="5" pl="10"  width="full" mt={1} bg="gray.800" _hover={"#18181B"} color="white" rounded="sm" onClick={submitHandler}>
             Register
-            <Box bg="#0398c2" color="white" alignSelf="center" p="3" ><FaCheck /></Box>
+            <Box bg="#161621" color="white" alignSelf="center" p="3" ><FaCheck /></Box>
           </Button>
         </Flex> 
       </Box>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { loadUser, updateprofile } from "../redux/actions/user";
+import { updateprofile, UserProfileUpdate } from "../redux/actions/user";
 import { useSelector } from "react-redux";
 import { Box, Button, Flex } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
@@ -21,7 +21,7 @@ function Updateprofile() {
     firstname: '',
     lastname: '',
     companyname: '',
-    phoneNo: '',
+    phoneNo: user.phoneNo || '',
     username: '',
     password: '',
     category: '',
@@ -51,10 +51,10 @@ function Updateprofile() {
   }, [user]);
 
    const submitHandler = async(e) => {
-    // if (!inputs.firstname || !inputs.lastname || !inputs.email || !inputs.password || !inputs.username || !inputs.companyname || !inputs.phoneNo || !inputs.category || !inputs.city || !inputs.state || !inputs.address) {
-    //   toast.error("Please fill all the required fields", { position: "top-center", className: "max-w-fit" });
-    //   return;
-    // }
+    if (!inputs.firstname || !inputs.lastname || !inputs.email || !inputs.password || !inputs.username || !inputs.companyname || !inputs.phoneNo || !inputs.category || !inputs.city || !inputs.state || !inputs.address) {
+      toast.error("Please fill all the required fields", { position: "top-center", className: "max-w-fit" });
+      return;
+    }
     if (!/\S+@\S+\.\S+/.test(inputs.email)) {
       toast.error("Please enter a valid email address", { position: "top-center", className: "max-w-fit" });
       return;
@@ -88,15 +88,23 @@ function Updateprofile() {
       <Header />
       <SubHeading title="Wall Clock Zone" subTitle="Edit Profile"/>
       <Title title="Edit Profile"/>
-      <Form inputs={inputs} setInputs={setInputs} errors='' readonly = "" isRgistration="false"/>
-      <Box width={"10rem"} mx={{xl: "290px",  base: "5" }}>
-        <Flex>
-          <Button type="submit" gap="5" pl="10" pr='0' width="full" mt={1} bg={"#00A9DA"} _hover={"#048fb6"} color="white" rounded="sm" onClick={submitHandler}>
-            Save Changes
-            <Box bg="#0398c2" color="white" alignSelf="center" p="3"><FaCheck/></Box>
-          </Button>
-        </Flex> 
-      </Box>
+      {
+        user && user.isRegister ? (
+          <>
+            <Form inputs={inputs} setInputs={setInputs} errors='' readonly = "" isRgistration="false"/>
+            <Box width={"10rem"} mx={{xl: "290px",  base: "5" }}>
+              <Flex>
+                <Button type="submit" gap="5" pl="10" pr='0' width="full" mt={1} bg={"#00A9DA"} _hover={"#048fb6"} color="white" rounded="sm" onClick={submitHandler}>
+                  Save Changes
+                  <Box bg="#0398c2" color="white" alignSelf="center" p="3"><FaCheck/></Box>
+                </Button>
+              </Flex> 
+            </Box>  
+          </>
+        ) :(
+          <UserProfileUpdate/>
+        )
+      }
     <Footer />
     </>
     
