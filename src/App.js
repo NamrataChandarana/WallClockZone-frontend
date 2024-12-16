@@ -20,6 +20,7 @@ import { Toaster} from 'sonner'
 import AuthLayout from "./components/AuthLayout";
 import Pagenotfound from "./pages/Pagenotfound";
 import Approval from "./pages/Approval";
+import './App.css';
 
 function App() {
 

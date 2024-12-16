@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Herosection = () => {
     return (
-        <Box minH="100vh" bg="white" color="gray.800">
+        <Box minH="90vh" bg="white" color="gray.800">
           <Box
             as="header"
             position="relative"
