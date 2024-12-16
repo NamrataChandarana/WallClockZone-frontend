@@ -1,6 +1,6 @@
 import React,{ useRef }  from 'react';
 import { useForm, ValidationError } from '@formspree/react';
-import { Box, Button, FormControl, FormLabel, Input, Textarea, Text, Flex } from '@chakra-ui/react';
+import { Box, Button, FormControl, FormLabel, Input, Textarea, Text, Flex, Heading, VStack } from '@chakra-ui/react';
 import Title from './Title';
 import { FaCheck } from 'react-icons/fa';
 
@@ -17,10 +17,17 @@ function ContactForm() {
   }
 
   return (
-    <Box maxW="xl" mx="auto" mb="16">
-        <Title title="Contact Us" />
-      <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col">
-        <Flex spacing={8} mb={8} gap="5">
+    <Box maxW="xl" mx="auto" mb="12" px={"10"} >
+       <VStack spacing={1} maxW="3xl" mx="auto" textAlign="center" mb={12}>
+          <Heading as="h2" fontSize={{ base: '4xl', md: '4xl' }} fontWeight="semibold" fontFamily="Inter" >
+            Contact Us
+          </Heading>
+          <Text fontSize={{ base: 'lg', md: 'lg' }} color="gray.600" fontFamily="Inter" >
+            Quick Solutions, Just a Message Away
+          </Text>
+        </VStack>
+      <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col" >
+        <Flex spacing={6} mb={8} gap="4">
           <FormControl id="name">
             <FormLabel>Name</FormLabel>
             <Input 
@@ -69,22 +76,22 @@ function ContactForm() {
             className="text-red" 
           />
         </FormControl>
-        <Button 
-          type="submit" 
-          isLoading={state.submitting} 
-          gap="5" 
-          pl="10" 
-          pr='0' 
-        //   width="full" 
-          mt="5" 
-          bg={"#00A9DA"} 
-          _hover={"#048fb6"} 
-          color="white" 
-          rounded="sm"
-        >
-          Submit
-          <Box bg="#0398c2" color="white" alignSelf="center" p="3"><FaCheck /></Box>
-        </Button>
+         {/* <VStack spacing={6} mt={6}> */}
+            <Button
+              type="submit" 
+              isLoading={state.submitting}
+              size="lg"
+              colorScheme="blue"
+              height="45px"
+              px={12}
+              mt={3}
+              fontSize="lg"
+              bgColor={"#18181B"}
+              _hover={{ bg: "#18181B" }}
+            >
+              Submit
+            </Button>
+          {/* </VStack> */}
         <ValidationError errors={state.errors} />
         {state.succeeded && <Text textAlign="center" my={2} fontSize="lg">Thanks for your submission!</Text>}
       </form>

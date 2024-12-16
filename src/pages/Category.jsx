@@ -20,8 +20,7 @@ import Footer from "../components/Footer";
 function Category() {
 
   const dispatch = useDispatch();
-  const {categories} = useSelector((state) => state.category)
-  const {loading} = useSelector((state)=> state.category);
+  const {categories, loading} = useSelector((state) => state.category);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -35,8 +34,6 @@ function Category() {
         <CategorySkeleton />
         <Footer/>
       </>
-     
-      
     )
   }
 
@@ -90,7 +87,7 @@ function Category() {
               </Container>
             </Box>
             : 
-            <Box className="text-3xl m-auto">
+            <Box className="text-3xl mx-auto">
               No categories yet!
             </Box>
           }

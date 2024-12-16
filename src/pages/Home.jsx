@@ -8,6 +8,7 @@ import { loadUser } from "../redux/actions/user";
 import Herosection from "../components/Herosection";
 import HowItWorks from "../components/HowItWorks";
 import ServicesSection from "../components/ServiceSection";
+import JoinNetwork from "../components/JoinNetwork";
 
 
 function Home() {
@@ -27,6 +28,8 @@ function Home() {
         <HowItWorks/>
 
         <ServicesSection/>
+
+        <JoinNetwork/>
 
         {/* ======= Contact Section ======= */}
         <ContactSec/>
