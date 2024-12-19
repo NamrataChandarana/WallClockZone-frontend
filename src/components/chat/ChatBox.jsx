@@ -13,6 +13,7 @@ import { getSender } from './ChatLogic';
 import { useToast } from '@chakra-ui/react';
 import { accessChatUser } from '../../redux/actions/chat';
 import { useDispatch } from 'react-redux';
+
 const ChatBox = ({ selectedData, setSelectedData }) => {
 
   const selectedChat = useSelector(state => state?.chat?.chatData?.users);
@@ -21,6 +22,8 @@ const ChatBox = ({ selectedData, setSelectedData }) => {
   const toast = useToast();
   const [loadingChat, setLoadingChat] = useState(false);
   const dispatch = useDispatch();
+
+  console.log(selectedChat)
 
   async function accessChat3(userId){
         try{
@@ -66,11 +69,12 @@ const ChatBox = ({ selectedData, setSelectedData }) => {
           m={2}
         />
         {
-          selectedChat ? (
-            user?._id !== selectedChat[1]?._id ? (
-              selectedChat[1]?.companyname
+          
+          selectedChat && selectedChat.length > 1  ? (
+            user?._id !== selectedChat[1]?.userId?._id ? (
+              selectedChat[1]?.userId?.companyname || selectedChat[1]?.userId?.name
             ) : (
-              selectedChat[0]?.companyname
+              selectedChat[0]?.userId?.companyname || selectedChat[0]?.userId?.name
             ) 
             )  : "User"
         }
@@ -86,19 +90,19 @@ const ChatBox = ({ selectedData, setSelectedData }) => {
             {!notification.length && "No New Messages"}
             {notification.map((notif) => (
               <MenuItem
-                key={notif._id}
+                key={notif?._id}
                 onClick={() => {
-                  user?._id !== notif?.chat?.users[1]?._id ? (
-                    accessChat3(notif?.chat?.users[1]?._id)
+                  user?._id !== notif?.chat?.users[1]?.userId?._id ? (
+                    accessChat3(notif?.chat?.users[1]?.userId?._id)
                   ) : (
-                    accessChat3(notif?.chat?.users[0]?._id)
+                    accessChat3(notif?.chat?.users[0]?.userId?._id)
                   ) 
                   setNotification(notification.filter((n) => n !== notif));
                 }}
               >
-                {notif.chat.isGroupChat
-                  ? `New Message in ${notif.chat.chatName}`
-                  : `New Message from ${getSender(user, notif.chat.users)}`}
+                {notif?.chat?.isGroupChat
+                  ? `New Message in ${notif?.chat?.chatName}`
+                  : `New Message from ${getSender(user, notif?.chat?.users)}`}
               </MenuItem>
             ))}
           </MenuList>

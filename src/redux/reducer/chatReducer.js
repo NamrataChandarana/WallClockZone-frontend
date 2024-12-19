@@ -19,7 +19,6 @@ export const chatReducer = createReducer({users: []},{
         // state.error = null;/
       },
       accessChatSuccess: (state, action) => {
-
         state.loading = false;
         state.error = null;
         state.chatData = action.payload;
@@ -28,7 +27,6 @@ export const chatReducer = createReducer({users: []},{
         state.loading = false;
         state.error = action.payload;
       },
-    
     fetchChatRequest: (state) => {
         state.loading = true;
         state.error = null;

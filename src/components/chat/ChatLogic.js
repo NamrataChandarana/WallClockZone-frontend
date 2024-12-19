@@ -1,6 +1,7 @@
 
 export const getSender = (loggedUser, users) => {
-  return users[0]?._id === loggedUser?._id ? users[1]?.companyname : users[0]?.companyname;
+  console.log(users[0].userId.companyname)
+  return users[0]?.userId?._id === loggedUser?._id ? users[1]?.userId?.companyname || users[1]?.userId?.name : users[0]?.companyname || users[0]?.userId?.name;
 };
 
 export const isSameUser = (messages, m, i) => {

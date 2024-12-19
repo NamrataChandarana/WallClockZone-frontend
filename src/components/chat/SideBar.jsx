@@ -36,23 +36,9 @@ const SideBar = () => {
   }
 
   const data = useSelector((state) => state.chat.users)
+  console.log(data)
 
-  function accessChat(userId){
-        try{
-            setLoadingChat(true)
-            dispatch(accessChatUser(userId));
-            setLoadingChat(false)
-        }catch (error) {
-        toast({
-            title: "Error fetching the chat",
-            description: error.message,
-            status: "error",
-            duration: 5000,
-            isClosable: true,
-            position: "top-ceter",
-        });
-        }
-    }
+  
     // const selecteddata = useSelector(state => state?.chat?.chatData?.users);
     // const selecteduser = useSelector(state => state?.chat?.chatData);
   
@@ -88,11 +74,10 @@ const SideBar = () => {
          loading ? (
             <ChatLoading />
           ) : (
-            data?.map((user) => (
+           data && data.map((user) => (
                 <UserListItem
-                  key={user._id}
+                  key={user?._id}
                   user={user}
-                  handleFunction={() => accessChat(user._id)}
                 />
               ))
             )}

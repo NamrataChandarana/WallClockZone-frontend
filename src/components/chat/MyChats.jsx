@@ -18,12 +18,14 @@ const MyChats = ({selectedData , setSelectedData}) => {
   const selecteddata = useSelector(state => state?.chat?.Messages);
   const dispatch = useDispatch();
   const {user} = useSelector(state => state.chat);
+  console.log(user)
 
   useEffect(()=>{
     dispatch(fetchChatUser());
   },[dispatch, selecteddata])
-  
+
   function accessChat(userId){
+    console.log(userId)
     try{
         setLoadingChat(true)
         dispatch(accessChatUser(userId));
@@ -70,17 +72,19 @@ const MyChats = ({selectedData , setSelectedData}) => {
         w="100%"
         h="100%"
         borderRadius="lg"
-        overflowY="hidden"
+        overflowY="scroll"
       >
         {user ? (
           <Stack overflowY="scroll">
             {user?.map((chat) => (
               <Box
                 onClick={() => {
-                  loggedUser?.user?._id !== chat?.users[1]?._id ? (
-                    accessChat(chat?.users[1]?._id)
+                  console.log(loggedUser?.user);
+                  console.log(chat?.users[0]?._id)
+                  loggedUser?.user?._id !== chat?.users[0]?.userId?._id ? (
+                    accessChat(chat?.users[0]?.userId?._id)
                   ) : (
-                    accessChat(chat?.users[0]?._id)
+                    accessChat(chat?.users[1]?.userId?._id)
                   ) 
                   setSelectedData(chat)
                 }}
@@ -103,7 +107,7 @@ const MyChats = ({selectedData , setSelectedData}) => {
                 </Text>
                 {chat.latestMessage && (
                   <Text fontSize="xs" >
-                    <b>{chat?.latestMessage?.sender?.firstname}</b>
+                    <b>{chat?.latestMessage?.sender?.firstname || chat?.latestMessage?.sender?.name }</b>
                     {chat.latestMessage.content.length > 50
                       ? chat.latestMessage.content.substring(0, 51) + "..." :  chat.latestMessage.content}
 

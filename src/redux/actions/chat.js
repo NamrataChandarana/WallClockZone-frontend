@@ -37,6 +37,7 @@ export const accessChatUser = (userId = "") => async (dispatch) => {
           withCredentials: true,
         }
       );
+      console.log(data)
       dispatch({ type: "accessChatSuccess", payload: data });
       // toast.success("show");
     } catch (error) {
@@ -57,6 +58,7 @@ export const fetchChatUser =() => async (dispatch) => {
           withCredentials: true,
         }
       );
+      console.log(data);
       dispatch({ type: "fetchChatSuccess", payload: data });
       // toast.success("show");
     } catch (error) {
@@ -88,6 +90,7 @@ export const sendMsgUser = (selectedData, newMessage) => async (dispatch) => {
 };
   
 export const fetchMsgUser = (chatId) => async(dispatch) => {
+  console.log(chatId)
   try{
     dispatch({type: "fetchMsgRequest"})
     const {data} = await axios.get(`${server}/chat/getMsg/${chatId}`,{

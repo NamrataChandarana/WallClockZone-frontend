@@ -58,6 +58,7 @@ const SingleChat = ({notification, setNotification}) => {
     const fetchMsg = async(chatId) =>{
 
       if(!seletedChat) return;
+      console.log(chatId)
       const msg = await dispatch(fetchMsgUser(chatId));
       setMessages(msg);
       setLoading(false)
@@ -65,11 +66,14 @@ const SingleChat = ({notification, setNotification}) => {
     
     useEffect(()=>{
       setLoading(true)
+      console.log(seletedChat)
       fetchMsg(seletedChat?._id);
       selectedChatCompare = seletedChat;
       setMsgLoading(false);
     },[seletedChat])
 
+
+    console.log(messages)
     //send msg
     const sendMessage = async(e) => {
        e.preventDefault(); 

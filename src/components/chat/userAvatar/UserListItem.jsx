@@ -1,10 +1,37 @@
 import { Box, Text } from "@chakra-ui/layout";
+import { accessChatUser } from "../../../redux/actions/chat";
+import { useDispatch, useSelector } from "react-redux";
+import { useToast } from "@chakra-ui/react";
+import { useState } from "react";
 
-const UserListItem = ({user, handleFunction}) => {
+const UserListItem = ({user}) => {
+  console.log(user?._id)
+  const [loadingChat, setLoadingChat] = useState(false);
+  const toast = useToast();
+  const dispatch = useDispatch();
+
+  function accessChat(userId){
+    try{
+        setLoadingChat(true)
+        dispatch(accessChatUser(userId));
+        setLoadingChat(false)
+    }catch (error) {
+    toast({
+        title: "Error fetching the chat",
+        description: error.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-ceter",
+    });
+    }
+  }
+const data = useSelector((state) => state?.chat?.chatData)
+console.log(data)
 
   return (
     <Box
-      onClick={handleFunction}
+      onClick={() => accessChat(user?._id)}
       cursor="pointer"
       bg="#E8E8E8"
       _hover={{
