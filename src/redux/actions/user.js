@@ -3,7 +3,6 @@ import {toast} from 'sonner'
 const server = process.env.REACT_APP_SERVER;
 
 export const login = (email, password) => async (dispatch) => {
-
   try {
     dispatch({ type: "loginRequest" });
 
@@ -30,9 +29,39 @@ export const login = (email, password) => async (dispatch) => {
     }else{
       toast.error("Something went wrong!");
     }
-    
   }
 };
+
+export const signup = (name, email, password) => async(dispatch) =>{
+  try {
+    dispatch({ type: "signupRequest" });
+    const { data } = await axios.post(
+      `${server}/users/signup`,
+      {
+        name,
+        email,
+        password,
+      },
+      {
+        headers: {
+          "Content-type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+
+    dispatch({ type: "signupSuccess", payload: data });
+    toast.success(data.message, {position: "top-center"});
+  } catch (error) {
+    dispatch({ type: "signupFail", payload: error });
+    if(error?.response?.data?.message){
+      toast.error(error?.response?.data?.message);
+    }else{
+      toast.error("Something went wrong!");
+    }
+    
+  }
+}
 
 export const loadUser = () => async (dispatch) => {
   try {
@@ -158,7 +187,7 @@ export const updateprofile =(
     }
   };
 
-//Non Register user
+//UnRegister user profile update
   export const UserProfileUpdate =(
     name,
     email,
@@ -182,7 +211,7 @@ export const updateprofile =(
           withCredentials: true,
         }
       );
-      dispatch({ type: "UserProfileUpdateSuccess", payload: data.message });
+      dispatch({ type: "UserProfileUpdateSuccess", payload: data.user });
       toast.success("update successfully");
       return true
     } catch (error) {

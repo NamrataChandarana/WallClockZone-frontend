@@ -5,13 +5,9 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import {toast} from 'sonner'
 import { Box, Button } from '@chakra-ui/react';
-import Title from "./Title";
 import Form from "./Form";
-import SubHeading from "./SubHeading";
 import { FaCheck } from "react-icons/fa";
 import { Flex } from "@chakra-ui/react";
-import Footer from "./Footer";
-import Header from "./Header";
 
 function RegisterComponent() {
   const [inputs , setInputs] = useState({
@@ -29,7 +25,6 @@ function RegisterComponent() {
     website: ''
   })
   const [errors, setErrors] = useState({});
-
   const { isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -89,13 +84,6 @@ function RegisterComponent() {
       return;
     }
     
-    // if () {
-    //   setErrors({email: "Please enter a valid email address"});
-    //   return;
-    // }
-    
-   
-
     const res = await dispatch(
       registeration(
         inputs.firstname,
@@ -118,18 +106,16 @@ function RegisterComponent() {
       toast(res.message);
     }
     if(res){
-      console.log(res)
       setErrors(res);
     } 
   };
 
-  if (isAuthenticated) return <Navigate to="/approval" />;
+  const {user} = useSelector((state) => state.user)
+  if (isAuthenticated && user.isRegister ) return <Navigate to="/approval" />;
+
 
   return (
     <>
-      <Header/>
-      <SubHeading title="Wall Clock Zone" subTitle="User Register"/>
-      <Title title="Register An Account" />
       <Form inputs={inputs} setInputs={setInputs} errors={errors} readonly="" isRegistration="true"/>
       <Box width={"9rem"} mx={{xl: "290px",  base: "5" }} mb="10">
         <Flex>
@@ -139,7 +125,6 @@ function RegisterComponent() {
           </Button>
         </Flex> 
       </Box>
-      <Footer/>
     </>
   );
 }

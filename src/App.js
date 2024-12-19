@@ -23,7 +23,7 @@ import Approval from "./pages/Approval";
 import './App.css';
 import ProfileUpdate from "./components/unRegisterUser/ProfileUpdate";
 import UserProfilecomponent from "./components/unRegisterUser/UserProfilecomponent";
-
+import Signup from "./pages/auth/Signup";
 
 function App() {
 
@@ -49,7 +49,9 @@ function App() {
         <Route path="/login" element={
           <Login />
         } />
-       
+        <Route path="/signup" element={
+          <Signup />
+        } />
         <Route path="/register" element={
           <Register />
         } />
