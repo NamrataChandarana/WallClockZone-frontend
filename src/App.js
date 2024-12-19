@@ -21,8 +21,9 @@ import AuthLayout from "./components/AuthLayout";
 import Pagenotfound from "./pages/Pagenotfound";
 import Approval from "./pages/Approval";
 import './App.css';
-import ProfileUpdate from "./components/nonRegisterUser/ProfileUpdate";
-import UserProfilecomponent from "./components/nonRegisterUser/UserProfilecomponent";
+import ProfileUpdate from "./components/unRegisterUser/ProfileUpdate";
+import UserProfilecomponent from "./components/unRegisterUser/UserProfilecomponent";
+
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
         <Route path="/login" element={
           <Login />
         } />
+       
         <Route path="/register" element={
           <Register />
         } />

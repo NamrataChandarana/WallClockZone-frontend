@@ -1,59 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { Box, Button, FormControl, FormLabel, Input, } from "@chakra-ui/react";
-import { useDispatch, useSelector } from 'react-redux';
-import toast from 'react-hot-toast';
-import { UserProfileUpdate } from '../../redux/actions/user';
+import { useSelector } from 'react-redux';
 import Header from '../Header';
-import SubHeading from '../SubHeading';
 import Title from '../Title';
+import SubHeading from '../SubHeading';
 import Footer from '../Footer';
 
-const ProfileUpdate = () => {
+const UserProfilecomponent = () => {
     const navigate = useNavigate(); 
-    const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user);
     const [inputs , setInputs] = useState({
-      name:'',
-      email:'',
-      password:''
+      name: user?.name || '',
+      email: user?.email || '',
+      password: user?.password || ''
     })
 
-    useEffect(() => {
-      if (user) {
-        setInputs({
-            name: user.name || '',
-            email:user.email || '',
-            password:user.password || ''
-        });
-      }
-    }, [user]);
-
-    const handleSubmit = async(e) => {
-        if (!inputs.name || !inputs.email || !inputs.password ) {
-          toast.error("Please fill all the required fields", { position: "top-center", className: "max-w-fit" });
-          return;
-        }
-        if (!/\S+@\S+\.\S+/.test(inputs.email)) {
-            toast.error("Please enter a valid email address", { position: "top-center", className: "max-w-fit" });
-            return;
-        }
-         e.preventDefault();
-        const res = await dispatch(
-          UserProfileUpdate(
-            inputs.name,
-            inputs.email,
-            inputs.password
-          )
-        );
-        if(res) navigate('/profile')
+    const handleUpdateClick = () => {
+        navigate('/editprofile');
     };
 
   return (
-   <>   
-      <Header />
+   <>
+      <Header/>
       <SubHeading title="Wall Clock Zone" subTitle="Edit Profile"/>
-      <Title title="Edit Profile"/>
+      <Title title="Profile"/>
       <Box display="flex"  justifyContent="center" px={{ base: 6, xl: 10 }} mb="10" >
         <Box mx="auto" w="350px" p={5} borderWidth="1px" borderRadius="md" borderColor="gray.200">
           <Box as="form" spacing={4} pt={5}>
@@ -62,8 +33,9 @@ const ProfileUpdate = () => {
               <Input
                 id="email"
                 type="text"
-                onChange={(e) => setInputs({...inputs, name:e.target.value})} 
-                value={inputs.name}
+              //   onChange={(e) => setEmail(e.target.value)}
+                value={inputs?.name}
+                readOnly
               />
 
             </FormControl>
@@ -72,8 +44,9 @@ const ProfileUpdate = () => {
               <Input
                 id="email"
                 type="text"
-                onChange={(e) => setInputs({...inputs, email:e.target.value})} 
-                value={inputs.email} 
+              //   onChange={(e) => setEmail(e.target.value)}
+                value={inputs?.email}
+                readOnly
               />
 
             </FormControl>
@@ -98,7 +71,7 @@ const ProfileUpdate = () => {
               my={5}
               _hover={{ bg: "#18181B" }}
               // mx="5%"
-              onClick={handleSubmit}
+              onClick={handleUpdateClick}
             >
               Edit
             </Button>
@@ -110,4 +83,4 @@ const ProfileUpdate = () => {
   )
 }
 
-export default ProfileUpdate;
+export default UserProfilecomponent;

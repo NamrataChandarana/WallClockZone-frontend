@@ -12,7 +12,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SubHeading from "../components/SubHeading";
 import { loadUser } from "../redux/actions/user";
-import UserProfilecomponent from "../components/nonRegisterUser/UserProfilecomponent";
+import UserProfilecomponent from "../components/unRegisterUser/UserProfilecomponent";
 
 function Profile() {
   const { user } = useSelector((state) => state.user);
