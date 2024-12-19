@@ -9,6 +9,7 @@ import Herosection from "../components/Herosection";
 import HowItWorks from "../components/HowItWorks";
 import ServicesSection from "../components/ServiceSection";
 import JoinNetwork from "../components/JoinNetwork";
+import AboutSec from "../components/AboutSec";
 
 
 function Home() {
@@ -31,8 +32,11 @@ function Home() {
 
         <JoinNetwork/>
 
+        <AboutSec/>
+
         {/* ======= Contact Section ======= */}
         <ContactSec/>
+        
         <Footer />
       </>
     )   

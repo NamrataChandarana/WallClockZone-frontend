@@ -38,9 +38,9 @@ function JoinNetwork() {
   ];
 
   return (
-    <Box className="min-h-screen bg-gradient-to-b from-gray-50 to-white  py-10" >
+    <Box className="min-h-screen bg-gradient-to-b from-gray-50 to-white  pt-10" >
       <Container maxW="container.xl" px={4}>
-        <VStack spacing={1} maxW="3xl" mx="auto" textAlign="center" mb={12}>
+        <VStack spacing={1} maxW="3xl" mx="auto" textAlign="center" mb={20}>
           <Heading as="h2" fontSize={{ base: '4xl', md: '4xl' }} fontWeight="semibold" fontFamily="Inter" >
             Join Network
           </Heading>
